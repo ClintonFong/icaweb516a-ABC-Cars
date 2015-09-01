@@ -1,0 +1,93 @@
+<!-- 
+    tabSearchCarSimple-MakeModel
+
+    Description: this is called from app/pages/index.htm for the Search Car tab menu.
+
+    by Clinton Fong 2014
+-->
+
+<div id='cntSearchUsedNew'>
+    <input type="radio" ng-model="formData_searchCar.isNewCarType" value="all" checked /><label>All</label>
+    <input type="radio" ng-model="formData_searchCar.isNewCarType" value='new' /><label>New</label>
+    <input type="radio" ng-model="formData_searchCar.isNewCarType" value='used' /><label>Used</label>
+</div>
+
+<!-- -------- cntSearchMakeModel ----------------- -->
+<div id='cntSearchMakeModel' class='cnt2Items'>
+    <div id='cntSearchMake' class='cntItem1'>
+        <label>Make:</label>
+        <select ng-model    = "formData_searchCar.selectedMakeModels"
+                ng-change   = "formData_searchCar.selectedModel = formData_searchCar.selectedMakeModels.models[ formData_searchCar.selectedMakeModels.idxSelectedModel ]"
+                ng-options  = "makeModels.make for makeModels in makeModelsCollection"
+                class       = "inputField">
+        </select>
+    </div>
+
+    <div id='cntSearchModel' class='cntItem1'>
+        <label>Model:</label>
+        <select ng-model    = "formData_searchCar.selectedModel"
+                ng-change   = "formData_searchCar.selectedMakeModels.idxSelectedModel = formData_searchCar.selectedModel.idx"
+                ng-options  = "model.model for model in formData_searchCar.selectedMakeModels.models | orderBy: 'model': false"
+                class       = "inputField">
+        </select>
+    </div>
+</div>
+
+<!-- -------- price from & to ----------------- -->
+<div id='cntSearchPrice' class='cnt2Items'>
+
+    <div id='cntSearchPriceFrom' class='cntItem1'>
+        <label>Price from:</label>
+        <select ng-model    = "formData_searchCar.fromPrice"
+                ng-options  = "carPrice.display for carPrice in carPrices"
+                class       = "inputField">
+        </select>
+    </div>
+    <div id='cntSearchPriceTo' class='cntItem1'>
+        <label>to:</label>
+        <select ng-model    = "formData_searchCar.toPrice"
+                ng-options  = "carPrice.display for carPrice in carPrices"
+                class       = "inputField">
+        </select>
+    </div>
+
+</div>
+
+
+<!-- -------- year from & to ----------------- -->
+<div id='cntSearchYear' class='cnt2Items'>
+
+    <div id='cntSearchYearFrom' class='cntItem1'>
+        <label>Year from:</label>
+        <input type='text' class="inputField" ng-model="formData_searchCar.fromYear" value="{{ formData_searchCar.fromYear }}" />
+    </div>
+    <div id='cntSearchYearTo' class='cntItem1'>
+        <label>to:</label>
+        <input type='text' class="inputField" ng-model="formData_searchCar.toYear" value="{{ formData_searchCar.toYear }}" />
+    </div>
+
+</div>
+
+<!-- -------- location & keyword ----------------- -->
+<!--
+<div id='cntSearchLocationKeyword' class='cnt2Items'>
+    <div id='cntSearchLocation' class='cntItem1' ng-init="optionsLocaction=['Parramatta', 'Hornsby']">
+        <label>Location:</label>
+        <select id='searchLocation' class='inputField'>
+            <option ng-repeat='option in optionsPriceFrom' value='{{option}}'>{{option}}</option>
+        </select>
+    </div>
+
+    <div id='cntSearchModel' class='cntItem1'>
+        <label>Keyword:</label>
+        <input id='searchKeyword' class='inputField' type='text' value='' />
+    </div>
+</div>
+-->
+
+<!-- -------- Submit Search  ----------------- -->
+<div id='cntSubmitSearch'>
+    <a href=''>Advanced Search</a>
+    <input id='searchSubmit' type='button' value='Search' class="btn btn-colour blue-button" ng-click="doSearch()" />
+</div>
+

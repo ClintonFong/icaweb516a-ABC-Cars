@@ -1,0 +1,184 @@
+<!-- 
+    updateDeleteCustomer
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="updateDeleteCustomerPage" class="rightPanel" ng-controller="handleCustomerController">
+    <h1>Update / Delete Customer</h1>
+
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Enter Search Parameters for Customer to Update ------------>  
+    <!-- -------------------------------------------------------------->
+
+    <fieldset id='fldsetUpdateCustomer' class="fldsetUpdateDelete">
+        <legend ng-click="isCollapsed_getCustomerToUpdate = !isCollapsed_getCustomerToUpdate">Customer to Update / Delete?</legend>
+
+        <div id='cntUpdateCustomer-getCustomerToUpdate' collapse="isCollapsed_getCustomerToUpdate">
+
+            <!-- -------------- Enter Values ----------------->  
+            <div id='cntEnterValues-updateCustomer-search'>
+
+                <div class='cnt1Item'>
+                    <label>First Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateCustomer.firstname }}" ng-model="formData_updateCustomer.firstname" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Last Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateCustomer.lastname }}" ng-model="formData_updateCustomer.lastname"  />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Sign-in Email:</label>                        
+                    <input type='email' class="inputFieldUser" value="{{ formData_updateCustomer.email }}" ng-model="formData_updateCustomer.email" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Primary Phone:</label>                        
+                    <input type ='text' class="inputFieldUser" value="{{ formData_updateCustomer.phone }}" ng-model="formData_updateCustomer.phone" />
+                </div>
+
+            </div>
+
+            <!-- -------------- Retrieve Customer button ----------------->  
+            <div id='cntGetCustomerButton-updateCustomer-search' class="searchButtons">
+                <input  type="button" class="btn btn-colour blue-button" value="Get Customer" ng-click="getCustomerToUpdate()" /><br>
+                <input  type="button" class="btn btn-colour white-button" value="Clear Fields"  ng-click="clearCustomerToUpdateFields()" />
+            </div>
+        </div>
+
+    </fieldset>
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Customer to Update Listing/Individual -------------------------->  
+    <!-- -------------------------------------------------------------->
+    <div id='cntUpdateCustomer-searchResultsCustomerToUpdate' collapse="isCollapsed_searchResultsCustomerToUpdate"> 
+
+        <!-- errorBox --------------------------->
+        <div id='errorBox-updateCustomer' ng-show="isShowErrorBox_updateCustomer">
+            <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+        </div>
+
+        <!-- successBox --------------------------->
+        <div id='successBox-updateCustomer' ng-show="isShowSuccessBox_updateCustomer">
+            <alert type="success">{{ successMessage }}</alert>
+        </div>
+
+
+        <!-- -- listing --------------------->
+        <div id='cntUpdateCustomer-searchResultsCustomerToUpdate-listing'     ng-show="isShow_searchResultsCustomerToUpdate_listing"> 
+            <label class='important'>Double click on Selected Customer Listing to View</label>
+            <table>
+                <tr>
+                    <th>LASTNAME</th>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+                <tr ng-repeat="customer in customerToUpdateCollection|limitTo:7" ng-dblclick="selectCustomerFromListing( $index )">
+                    <td>{{ customer.lastname }}</td>
+                    <td>{{ customer.firstname }}</td>
+                    <td>{{ customer.email}}</td>
+                    <td>{{ customer.phone }}</td>
+                </tr>
+            </table>
+<!--
+            <pagination 
+                total-items     ="carToUpdateCollection.length" 
+                ng-model        ="currentListingPageNo" 
+                max-size        ="maxPageSize" 
+                class           ="pagination-sm" 
+                boundary-links  ="true" 
+                rotate          ="false" 
+                num-pages       ="numPages">
+            </pagination>
+-->
+        </div>
+
+
+        <!-- -- detail ---------------------->
+        <div id="cntUpdateCustomer-searchResultsCustomerToUpdate-detail"  ng-show="isShow_searchResultsCustomerToUpdate_detail">
+
+            <a ng-show="isShow_backToCustomerToUpdateListingButton" ng-click="goBackToCustomerToUpdateListing()">&larr; Back to Listing</a>
+           
+
+            <!-- -------------- Enter Values ----------------->
+            <div id="cntEnterValues-updateCustomer" class="enterValues enterValues80pc" ng-show="isShow_enterValues">
+
+
+                <!-- ---------------- Personal Details --------------------------------->
+
+                <div class="section-heading section-heading-collapse" ng-click="isCollapsed_updatePersonalDetails = !isCollapsed_updatePersonalDetails">Personal Details</div>
+                <div class="section-update" collapse="isCollapsed_updatePersonalDetails">
+
+                    <div id="cntEnterValues-updateCustomer-personalDetails">
+                        <div class='cnt1Item'>
+                            <label class="required">First Name:</label>                        
+                            <input type='text' class="inputFieldUser" value="{{ formData_updateCustomer.firstname }}" ng-model="formData_updateCustomer.firstname" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Last Name:</label>                        
+                            <input type='text' class="inputFieldUser important" value="{{ formData_updateCustomer.lastname }}" ng-model="formData_updateCustomer.lastname" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Sign-in Email:</label>                        
+                            <input type='email' class="inputFieldUser" value="{{ formData_updateCustomer.email }}" ng-model="formData_updateCustomer.email" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Primary Phone:</label>                        
+                            <input type ='text' class="inputFieldUser" value="{{ formData_updateCustomer.phone }}" ng-model="formData_updateCustomer.phone" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                    </div>
+
+                    <!-- -------------- personal details update buttons ----------------->  
+                    <div id="cntUpdateCustomer-detail-button" class='saveButtons'>
+                        <input type="button" class="btn btn-colour orange-button"   value="Update"   ng-click="updatePersonalDetails()" />
+                    </div>
+                </div>
+
+                <br />
+                <!-- ---------------- Password --------------------------------->
+                <div class="section-heading section-heading-color1 section-heading-collapse" init="isCollapsed_updatePassword=true" ng-click="isCollapsed_updatePassword = !isCollapsed_updatePassword">Reset Password</div>
+                <div class="section-update" collapse="isCollapsed_updatePassword">
+
+                    <div id="cntEnterValues-updateCustomer-password">
+                        <!--
+                        <div class='cnt1Item'>
+                            <label class="required">Old Password:</label>                        
+                            <input type='password' class="inputFieldUser required" value="{{ formData_updateCustomer.oldPasssword }}" ng-model="formData_updateCustomer.oldPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                        -->
+                        <div class='cnt1Item'>
+                            <label class="required">New Password:</label>                        
+                            <input type='password' class="inputFieldUser required" value="{{ formData_updateCustomer.newPasssword }}" ng-model="formData_updateCustomer.newPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Confirm Password:</label>                        
+                            <input type='password' class="inputFieldUser" value="{{ formData_updateCustomer.confirmPassword }}" ng-model="formData_updateCustomer.confirmPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                    </div>
+
+                    <!-- -------------- password update buttons ----------------->  
+                    <div id="cntUpdateCustomer-password-button" class='saveButtons'>
+                        <input type="button" class="btn btn-colour red-button"      value="Update"   ng-click="updatePassword()" />
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- -------------- delete /cancel User buttons ----------------->  
+            <div id="cntUpdateCustomer-delete-button" class='saveButtons'>
+                <input type="button" class="btn btn-colour red-button"      value="Delete"   ng-click="deleteUser()" />
+                <input type="button" class="btn btn-colour white-button"    value="Close"   ng-click="updateCustomerCancel()" /><br>
+            </div>
+
+        </div>
+            
+
+        <!-- -- no results ------------------>
+        <div id='cntUpdateCar-searchResultsCustomerToUpdate-noResults'   ng-show="isShow_searchResultsCustomerToUpdate_noResults">
+            <h2>No Customer with Given Criteria Found</h2>
+        </div>
+
+</div>

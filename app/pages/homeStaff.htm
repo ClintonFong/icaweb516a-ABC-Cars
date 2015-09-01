@@ -1,0 +1,38 @@
+<!-- template for homeManager page -->
+
+<div class="left-panel" ng-show="isAuthorized">
+
+    <accordion id='cntLeftMenu' close-others='false'>
+        <accordion-group is-open='menuStatus[0].isOpen'>
+            <accordion-heading class='menu-title'>
+                Cars <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': menuStatus[0].isOpen , 'glyphicon-chevron-right': !menuStatus[0].isOpen }"></i> 
+            </accordion-heading>
+            <ul class='left-menu'>
+                <li ng-click="changeLeftPanelMenuItem( leftPanelMenuItem.addNewCar )">Add</li>
+                <li ng-click="changeLeftPanelMenuItem( leftPanelMenuItem.updateDeleteCar )">Update / Delete</li>
+            </ul>
+
+        </accordion-group>
+
+        <accordion-group is-open='menuStatus[1].isOpen'>
+            <accordion-heading class='menu-title'>
+                Customers <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': menuStatus[1].isOpen , 'glyphicon-chevron-right': !menuStatus[1].isOpen }"></i> 
+            </accordion-heading>
+            <ul class='left-menu'>
+                <li ng-click="changeLeftPanelMenuItem( leftPanelMenuItem.addNewCustomer )">Add</li>
+                <li ng-click="changeLeftPanelMenuItem( leftPanelMenuItem.updateDeleteCustomer )">Update / Delete</li>
+                <li ng-click="changeLeftPanelMenuItem( leftPanelMenuItem.enquiries )">Enquiries</li>
+            </ul>
+
+        </accordion-group>
+
+    <accordion>
+</div>
+
+<div class="right-panel" ng-show="isAuthorized">
+
+    <div ng-include src="selectedLeftPanelMenuItemURL"></div>
+
+</div>
+
+

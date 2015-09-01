@@ -1,0 +1,22 @@
+<!-- 
+    addCar
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="addCarPage" class="rightPanel" ng-controller="handleCarController">
+
+    <h1>Add Car</h1>
+
+
+    <tabset id="searchCarTabs">
+        <tab select="onTabClickListAndSell()" heading="To List &amp; Sell">
+            <div id='tabAddCar-ListSell' ng-include="'app/pages/component/tabAddCar-ListSell.htm'"></div>
+        </tab>
+        <tab select="onTabClickNewMakeAndModel()" heading="New Make &amp; Model">
+            <div id='tabAddCar-MakeModel' ng-include="'app/pages/component/tabAddCar-MakeModel.htm'"></div>
+        </tab>
+    </tabset>
+
+</div>

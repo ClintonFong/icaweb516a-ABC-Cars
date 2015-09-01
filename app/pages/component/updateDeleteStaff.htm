@@ -1,0 +1,202 @@
+<!-- 
+    updateDeleteStaff
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="updateDeleteStaffPage" class="rightPanel" ng-controller="handleStaffController">
+    <h1>Update / Delete Staff</h1>
+
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Enter Search Parameters for Staff to Update ------------>  
+    <!-- -------------------------------------------------------------->
+
+    <fieldset id='fldsetUpdateStaff' class="fldsetUpdateDelete">
+        <legend ng-click="isCollapsed_getStaffToUpdate = !isCollapsed_getStaffToUpdate">Staff to Update / Delete?</legend>
+
+        <div id='cntUpdateStaff-getStaffToUpdate' collapse="isCollapsed_getStaffToUpdate">
+
+            <!-- -------------- Enter Values ----------------->  
+            <div id='cntEnterValues-updateStaff-search'>
+
+                <div class='cnt1Item'>
+                    <label>Staff Type:</label>                        
+                    <select ng-model=   "formData_updateStaff.selectedUserTypeForSearch"
+                            ng-options  ="userType.display for userType in userTypesforSearch"
+                            class       = "inputFieldUser">
+                    </select>
+                </div>
+
+                <div class='cnt1Item'>
+                    <label>First Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateStaff.firstname }}" ng-model="formData_updateStaff.firstname" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Last Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateStaff.lastname }}" ng-model="formData_updateStaff.lastname"  />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Sign-in Email:</label>                        
+                    <input type='email' class="inputFieldUser" value="{{ formData_updateStaff.email }}" ng-model="formData_updateStaff.email" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Primary Phone:</label>                        
+                    <input type ='text' class="inputFieldUser" value="{{ formData_updateStaff.phone }}" ng-model="formData_updateStaff.phone" />
+                </div>
+
+            </div>
+
+            <!-- -------------- Retrieve Staff button ----------------->  
+            <div id="cntGetStaffButton-updateStaff-search" class="searchButtons">
+                <input  type="button" class="btn btn-colour blue-button" value="Get Staff" ng-click="getStaffToUpdate()" /><br>
+                <input  type="button" class="btn btn-colour white-button" value="Clear Fields"  ng-click="clearStaffToUpdateFields()" />
+            </div>
+        </div>
+
+    </fieldset>
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Staff to Update Listing/Individual -------------------------->  
+    <!-- -------------------------------------------------------------->
+    <div id='cntUpdateStaff-searchResultsStaffToUpdate' collapse="isCollapsed_searchResultsStaffToUpdate"> 
+
+        <!-- -- listing --------------------->
+        <div id='cntUpdateStaff-searchResultsStaffToUpdate-listing'     ng-show="isShow_searchResultsStaffToUpdate_listing"> 
+            <label class='important'>Double click on Selected Staff Listing to View</label>
+            <table>
+                <tr>
+                    <th>Staff Type</th>
+                    <th>LASTNAME</th>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+                <tr ng-repeat="staff in staffToUpdateCollection|limitTo:10" ng-dblclick="selectStaffFromListing( $index )">
+                    <td>{{ displayUserTypeForListing( staff.userType ) }}</td> 
+                    <td>{{ staff.lastname }}</td>
+                    <td>{{ staff.firstname }}</td>
+                    <td>{{ staff.email}}</td>
+                    <td>{{ staff.phone }}</td>
+                </tr>
+            </table>
+<!--
+            <pagination 
+                total-items     ="carToUpdateCollection.length" 
+                ng-model        ="currentListingPageNo" 
+                max-size        ="maxPageSize" 
+                class           ="pagination-sm" 
+                boundary-links  ="true" 
+                rotate          ="false" 
+                num-pages       ="numPages">
+            </pagination>
+-->
+        </div>
+
+
+        <!-- errorBox --------------------------->
+        <div id='errorBox-updateStaff' ng-show="isShowErrorBox_updateStaff">
+            <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+        </div>
+
+        <!-- successBox --------------------------->
+        <div id='successBox-updateStaff' ng-show="isShowSuccessBox_updateStaff">
+            <alert type="success">{{ successMessage }}</alert>
+        </div>
+
+
+        <!-- -- detail ---------------------->
+        <div id="cntUpdateStaff-searchResultsStaffToUpdate-detail"  ng-show="isShow_searchResultsStaffToUpdate_detail">
+
+            <a ng-show="isShow_backToStaffToUpdateListingButton" ng-click="goBackToStaffToUpdateListing()">&larr; Back to Listing</a>
+           
+
+            <!-- -------------- Enter Values ----------------->
+            <div id="cntEnterValues-updateStaff" class="enterValues enterValues80pc" ng-show="isShow_enterValues">
+
+
+                <!-- ---------------- Personal Details --------------------------------->
+                <div class="section-heading section-heading-collapse" init="isCollapsed_updatePersonalDetails=false" ng-click="isCollapsed_updatePersonalDetails = !isCollapsed_updatePersonalDetails">Personal Details</div>
+                <div class="section-update" collapse="isCollapsed_updatePersonalDetails">
+
+                    <div id="cntEnterValues-updateStaff-personalDetails">
+
+                        <div class='cnt1Item'>
+                            <label>Staff Type:</label>                        
+                            <select ng-model=   "formData_updateStaff.selectedUserType"
+                                    ng-options  ="userType.display for userType in userTypes"
+                                    class       = "inputFieldUser">
+                            </select>
+                        </div>
+
+                        <div class='cnt1Item'>
+                            <label class="required">First Name:</label>                        
+                            <input type='text' class="inputFieldUser" value="{{ formData_updateStaff.firstname }}" ng-model="formData_updateStaff.firstname" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Last Name:</label>                        
+                            <input type='text' class="inputFieldUser important" value="{{ formData_updateStaff.lastname }}" ng-model="formData_updateStaff.lastname" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Sign-in Email:</label>                        
+                            <input type='email' class="inputFieldUser" value="{{ formData_updateStaff.email }}" ng-model="formData_updateStaff.email" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Primary Phone:</label>                        
+                            <input type ='text' class="inputFieldUser" value="{{ formData_updateStaff.phone }}" ng-model="formData_updateStaff.phone" ng-class="{submitted:submitUpdatePersonalDetails.isSubmitted}" required />
+                        </div>
+                    </div>
+
+                    <!-- -------------- personal details update buttons ----------------->  
+                    <div id="cntUpdateStaff-detail-button" class='saveButtons'>
+                        <input type="button" class="btn btn-colour orange-button"   value="Update"   ng-click="updatePersonalDetails()" />
+                    </div>
+                </div>
+
+                <br />
+                <!-- ---------------- Password --------------------------------->
+                <div class="section-heading section-heading-color1 section-heading-collapse" ng-click="isCollapsed_updatePassword = !isCollapsed_updatePassword">Reset Password</div>
+                <div class="section-update" collapse="isCollapsed_updatePassword">
+
+                    <div id="cntEnterValues-updateStaff-password">
+                        <!--
+                        <div class='cnt1Item'>
+                            <label class="required">Old Password:</label>                        
+                            <input type='password' class="inputFieldUser required" value="{{ formData_updateStaff.oldPasssword }}" ng-model="formData_updateStaff.oldPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                        -->
+                        <div class='cnt1Item'>
+                            <label class="required">New Password:</label>                        
+                            <input type='password' class="inputFieldUser required" value="{{ formData_updateStaff.newPasssword }}" ng-model="formData_updateStaff.newPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label class="required">Confirm Password:</label>                        
+                            <input type='password' class="inputFieldUser" value="{{ formData_updateStaff.confirmPassword }}" ng-model="formData_updateStaff.confirmPassword" ng-class="{submitted:submitUpdatePassword.isSubmitted}" required />
+                        </div>
+                    </div>
+
+                    <!-- -------------- password update buttons ----------------->  
+                    <div id="cntUpdateStaff-password-button" class='saveButtons'>
+                        <input type="button" class="btn btn-colour red-button"      value="Update"   ng-click="updatePassword()" />
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- -------------- delete /cancel User buttons ----------------->  
+            <div id="cntUpdateStaff-delete-button" class='saveButtons'>
+                <input type="button" class="btn btn-colour red-button"      value="Delete"   ng-click="deleteUser()" />
+                <input type="button" class="btn btn-colour white-button"    value="Close"   ng-click="updateStaffCancel()" /><br>
+            </div>
+
+        </div>
+            
+
+        <!-- -- no results ------------------>
+        <div id='cntUpdateCar-searchResultsStaffToUpdate-noResults'   ng-show="isShow_searchResultsStaffToUpdate_noResults">
+            <h2>No Staff with Given Criteria Found</h2>
+        </div>
+
+</div>

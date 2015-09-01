@@ -1,0 +1,79 @@
+<!-- 
+    addStaff
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="addStaffPage" class="rightPanel" ng-controller="handleStaffController">
+    <h1>Add Staff</h1>
+
+
+    <!-- errorBox --------------------------->
+    <div id='errorBox-addStaff' ng-show="isShowErrorBox_addStaff">
+        <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+    </div>
+
+    <!-- successBox --------------------------->
+    <div id='successBox-addStaff' ng-show="isShowSuccessBox_addStaff">
+        <alert type="success">{{ successMessage }}</alert>
+    </div>
+
+
+    <!-- Adding Staff  --------------------------->
+    <div id="cntAddStaff">
+
+        <!-- cntEnterValues-addStaff --------->
+        <div id="cntEnterValues-addStaff" class="enterValues enterValues80pc">
+
+            <div class='cnt1Item'>
+                <label>Staff Type:</label>                        
+                <select ng-model=   "formData_addStaff.selectedUserType"
+                        ng-options  ="userType.display for userType in userTypes"
+                        class       = "inputFieldUser">
+                </select>
+            </div>
+
+            <div class='cnt1Item'>
+                <label class='required'>First Name:</label>                        
+                <input name='firstname' id='registerFirstname' type='text' class="inputFieldUser" value="{{ formData_addStaff.firstname }}" ng-model="formData_addStaff.firstname" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required'>Last Name:</label>                        
+                <input name='lastname' id='registerLastname' type='text' class="inputFieldUser" value="{{ formData_addStaff.lastname }}" ng-model="formData_addStaff.lastname" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Sign-in Email:</label>                        
+                <input name='signinEmail' id='registerSigninEmail' type='email' class="inputFieldUser" value="{{ formData_addStaff.email }}" ng-model="formData_addStaff.email" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Primary Phone:</label>                        
+                <!--
+                <input name='primaryPhone' id='registerPrimaryPhone' type ='text' class="inputFieldUser" value="{{ formData_addStaff.phone }}" ng-model="formData_addStaff.phone" ng-class="{submitted:submitAddStaff.isSubmitted}" onkeypress="isPhoneNumberKey(event)" required />
+                -->
+                <input name='primaryPhone' id='registerPrimaryPhone' type ='text' class="inputFieldUser" value="{{ formData_addStaff.phone }}" ng-model="formData_addStaff.phone" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Password:</label>                        
+                <input name='password' id='registerPassword' type ='password' class="inputFieldUser" value="{{ formData_addStaff.password }}" ng-model="formData_addStaff.password" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+
+            <div class='cnt1Item'>
+                <label class='required'>Confirm Password:</label>                        
+                <input name='confirmPassword' id='registerConfirmPassword' type ='password' class="inputFieldUser" value="{{ formData_addStaff.passwordConfirm }}" ng-model="formData_addStaff.passwordConfirm" ng-class="{submitted:submitAddStaff.isSubmitted}" required />
+            </div>
+
+            <!--
+            <div id='cntRegisterMessage' ng-show='false'>
+                <br><label id='lblMsgRegister' class='required important'>Register Staff Unsuccessful:: Sign-in email already taken</label>
+            </div>
+            -->
+
+        </div>
+
+        <div id="cntSaveButton-addStaff" class='saveButtons'>
+            <input name="btnRegister" id="btnRegister" type="button" value="Save" class="btn btn-colour blue-button" ng-click="saveStaff()" />
+        </div>
+    </div>
+
+</div>

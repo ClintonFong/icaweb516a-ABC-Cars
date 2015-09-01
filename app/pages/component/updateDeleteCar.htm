@@ -1,0 +1,301 @@
+<!-- 
+    updateCar
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="updateDeleteCarPage" class="rightPanel" ng-controller="handleCarController">
+
+    <h1>Update / Delete Car</h1>
+
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Enter Search Parameters for Car to Update ----------------->  
+    <!-- -------------------------------------------------------------->
+
+    <fieldset id='fldsetUpdateCar' class="fldsetUpdateDelete">
+        <legend ng-click="isCollapsed_getCarToUpdate = !isCollapsed_getCarToUpdate">Car to Update / Delete?</legend>
+
+        <div id='cntUpdateCar-getCarToUpdate' collapse="isCollapsed_getCarToUpdate">
+            <!-- -------------- Enter Values ----------------->  
+            <div id='cntEnterValues-updateCar-search'>
+                <div id='cntRego-updateCar-search' class='cnt1Item'>
+                    <label>Rego:</label>
+                    <input type='text' class="inputField" ng-model='formData_updateCar.rego' value='formData_updateCar.rego'  />
+                </div>
+
+                <div id='cntVIN-updateCar-search' class='cnt1Item'>
+                    <label>VIN:</label>
+                    <input type='text' class="inputField" ng-model='formData_updateCar.VIN' value='formData_updateCar.VIN' />
+                </div>
+            </div>
+
+            <!-- -------------- Retrieve Car button ----------------->  
+            <div id='cntGetCarButton-updateCar-search'>
+                <input  type="button" class="btn btn-colour blue-button" value="Get Car" ng-click="getCarToUpdate()" />
+                <input  type="button" class="btn btn-colour white-button" value="Clear Fields"  ng-click="clearCarToUpdateFields()" />
+            </div>
+        </div>
+
+    </fieldset>
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Car to Update Listing/Individual -------------------------->  
+    <!-- -------------------------------------------------------------->
+    <div id='cntUpdateCar-searchResultsCarToUpdate' collapse="isCollapsed_searchResultsCarToUpdate">
+
+        <!-- -- listing --------------------->
+        <div id='cntUpdateCar-searchResultsCarToUpdate-listing'     ng-show="isShow_searchResultsCarToUpdate_listing">
+            <label class='important'>Double click on Selected Car Listing to View</label>
+            <table>
+                <tr>
+                    <th>Photo</th>
+                    <th>Rego</th>
+                    <th>VIN</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                </tr>
+                <tr ng-repeat="car in carToUpdateCollection|limitTo:7" ng-dblclick="selectCarFromListing( $index )">
+                    <td><img ng-src="{{ car.photoFilename }}" alt="Car Photo" class="car-listing-thumbnail" /></td>
+                    <td>{{ car.rego }}</td>
+                    <td>{{ car.VIN }}</td>
+                    <td>{{ car.make }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.price | currency }}</td>
+                </tr>
+            </table>
+<!--
+            <pagination 
+                total-items     ="carToUpdateCollection.length" 
+                ng-model        ="currentListingPageNo" 
+                max-size        ="maxPageSize" 
+                class           ="pagination-sm" 
+                boundary-links  ="true" 
+                rotate          ="false" 
+                num-pages       ="numPages">
+            </pagination>
+-->
+        </div>
+
+        <!-- -- detail ---------------------->
+        <div id='cntUpdateCar-searchResultsCarToUpdate-detail'      ng-show="isShow_searchResultsCarToUpdate_detail">
+
+            <a ng-show="isShow_backToCarToUpdateListingButton" ng-click="goBackToCarToUpdateListing()">&larr; Back to Listing</a>
+           
+            <form name="frmEnterValues-updateCar" ng-submit="submitForm_updateCar()">
+
+                <!-- -------------- Enter Values ----------------->
+                <div id="cntEnterValues-updateCar" class="enterValues enterValues80pc" ng-show="isShow_enterValues">
+
+
+                    <!-- ---------------- Registration --------------------------------->
+                    <div class='section-heading'>Registration</div>
+
+                    <div id='cntIsNew-updateCar' class='cnt1Item'>
+                        <label>Is New Car:</label>
+                        <input type='checkbox' ng-model="formData_updateCar.isNewCar" ng-checked="selectedCarToUpdate.isNewCar" />
+                    </div>
+
+                    <div id='cntRego-updateCar' class='cnt1Item'>
+                        <label>Rego:</label>
+                        <input type="text" class="inputField" ng-model="formData_updateCar.rego" value="{{ selectedCarToUpdate.rego }}" required />
+                    </div>
+
+                    <div id='cntVIN-updateCar' class='cnt1Item'>
+                        <label>VIN:</label>
+                        <input type="text" class="inputField" ng-model="formData_updateCar.VIN" value="{{ selectedCarToUpdate.VIN }}" required />
+                        <span> VIN number must be 17 characters</span>
+                    </div>
+
+                    <br>
+                    <!-- ---------------- Make & Price --------------------------------->
+                    <div class='section-heading'>Make &amp Price</div>
+
+                    <div id='cntMakeModel-updateCar'class ='cnt2Items'>   
+                        <div id='cntAddNewMake-updateCar' class='cntItem1'>
+                            <label>Make:</label>
+                            <select ng-model    = "formData_updateCar.selectedMakeModels"
+                                    ng-change   = "formData_updateCar.selectedModel = formData_updateCar.selectedMakeModels.models[ formData_updateCar.selectedMakeModels.idxSelectedModel ]"
+                                    ng-options  = "makeModels.make for makeModels in makeModelsCollection"  
+                                    class       = "inputField">
+                            </select>
+                        </div>
+
+                        <div id='cntAddNewModel-updateCar' class='cntItem2'>
+                            <label>Model:</label>
+                            <select ng-model    = "formData_updateCar.selectedModel"
+                                    ng-change   = "formData_updateCar.selectedMakeModels.idxSelectedModel = formData_updateCar.selectedModel.idx"
+                                    ng-options  = "model.model for model in formData_updateCar.selectedMakeModels.models | orderBy: 'model': false"
+                                    class       ="inputField" 
+                                    required>
+                            </select>      
+                        </div>
+                    </div>
+
+                    <div id='cntYear-updateCar' class='cnt1Item'>
+                        <label>Year:</label>
+                        <input type='text' class="inputField" ng-model="formData_updateCar.year" value="{{ formData_updateCar.year }}" />
+                    </div>
+
+                    <div id='cntPrice-updateCar' class='cnt1Item'>
+                        <label>Price:</label>
+                        <input type='text' class="inputField" ng-model="formData_updateCar.price" value="{{ formData_updateCar.price }}" />
+                    </div>
+
+                    <br>
+                    <!-- ---------------- Engine --------------------------------->
+                    <div class='section-heading'>Engine</div>
+
+                    <div id='cntTransmission-updateCar' class='cnt1Item'>
+                        <label>Transmission:</label>
+                        <select ng-model    = "formData_updateCar.selectedTransmission"
+                                ng-options  = "transmission.transmission for transmission in transmissions | orderBy: 'transmission': false"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+                    <div id='cntFuelType-updateCar' class='cnt1Item'>
+                        <label>Fuel Type:</label>
+                        <select ng-model    = "formData_updateCar.selectedFuelType"
+                                ng-options  = "fuelType.fuelType for fuelType in fuelTypes | orderBy: 'fuelType': true"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+                    <div id='cntDriveType-updateCar' class='cnt1Item'>
+                        <label>Drive Type:</label>
+                        <select ng-model    = "formData_updateCar.selectedDriveType"
+                                ng-options  = "driveType.driveType for driveType in driveTypes | orderBy: 'driveType': false"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+                    <div id='cntCylinders-updateCar' class='cnt1Item'>
+                        <label>Cylinders:</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.cylinders' value='' />
+                    </div>
+
+                    <div id='cntKilometres-updateCar' class='cnt1Item'>
+                        <label>Kilometres:</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.kilometres' value='' />
+                    </div>
+
+                    <div id='cntEngineSizeCCs-updateCar' class='cnt1Item'>
+                        <label>Engine Size (CCs):</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.engineSizeCCs' value='' />
+                    </div>
+
+                    <div id='cntPowerkW-updateCar' class='cnt1Item'>
+                        <label>Power (kW):</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.powerkW' value='' />
+                    </div>
+
+                    <br>
+                    <!-- ---------------- Style --------------------------------->
+                    <div class='section-heading  section-heading-color1'>Style</div>
+
+                    <div id='cntBodyType-updateCar' class='cnt1Item'>
+                        <label>Body Type:</label>
+                        <select ng-model    = "formData_updateCar.selectedBodyType"
+                                ng-options  = "bodyType.bodyType for bodyType in bodyTypes | orderBy: 'bodyType': false"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+                    <div id='cntSeats-updateCar' class='cnt1Item'>
+                        <label>Seats:</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.seats' value="{{ selectedCarToUpdate.seats }}" />
+                    </div>
+
+                    <div id='cntDoors-updateCar' class='cnt1Item'>
+                        <label>Doors:</label>
+                        <select ng-model    = "formData_updateCar.selectedNumDoors"
+                                ng-options  = "numDoors.numDoors for numDoors in doors | orderBy: 'numDoors': false"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+                    <div id='cntColourInterior-updateCar' class='cnt1Item'>
+                        <label>Interior Colour:</label>
+                        <input type='text' class="inputField" ng-model='formData_updateCar.colourInterior' value="{{ selectedCarToUpdate.colourInterior }}" />
+                    </div>
+
+                    <div id='cntColourExterior-updateCar' class='cnt1Item'>
+                        <label>Exterior Colour:</label>
+                        <input type='text' class="inputField" ng-model="formData_updateCar.colourExterior" value="{{ selectedCarToUpdate.colourExterior }}" />
+                    </div>
+
+                   <br>
+                    <!-- ---------------- Purchase Status --------------------------------->
+                    <div class='section-heading  section-heading-color1'>Purchase Status</div>
+
+                    <div id='cntPurchaseStatus-updateCar' class='cnt1Item'>
+                        <label>Purchase Status:</label>
+                        <select ng-model    = "formData_updateCar.selectedPurchaseStatus"
+                                ng-options  = "purchaseStatus.display for purchaseStatus in purchaseStatusTypes"
+                                class       = "inputField">
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <!-- ----- photos -------------------------------------------------------------------->
+                <div id="cntEnterValues-updateCar-photos" class="enterValues enterValues80pc" ng-show="!isShow_enterValues">
+
+                    <div id="cntUpdateCar-uploadImageFile">
+                        <div class="fileLoad btn btn-colour blue-button">
+                            <span>Load Photo</span>
+                            <input id='fileElement' type="file" class="load" ng-file-select="loadPhotoFile( $files )" />
+                        </div>
+                        <input type="text" class="fileLoadFilename" placeholder="Choose File" value="{{ photoFile.name }}" disabled="disabled" />
+                    </div>
+
+                    <div id="cntUpdateCar-photo" > 
+                        <img id="imgLoadedPhoto" ng-src="" alt=""  />
+                        <label ng-show="isShow_primaryPhotoLabel">*Primary photo</label>
+                    </div>
+
+                    <div id="cntUpdateCar-photo-thumbnails">
+                        <div id="cntUpdateCar-photoButtons">
+                            <input type="button" class="btn btn-colour orange-button"   value="Make Primary"   ng-click="makePrimaryPhoto()" />
+                            <input type="button" class="btn btn-colour red-button"      value="Delete Photo"   ng-click="deletePhoto()" />
+                        </div>
+                        <hr>
+                        <ul class="thumbnailNav">
+                            <li ng-repeat="photoFile in photoFiles | filter:filterPhotoFileThumbnail">
+	                            <img ng-src="{{ getThumbnailFile( photoFile ) }}" alt="{{photo.name}}"  ng-click="showEnlargedPhoto( photoFile.idx );" />
+	                        </li>
+                        </ul>
+                        
+                    </div> 
+
+                </div>
+           </form>
+
+            <!-- -------------- Update Values ----------------->  
+            <div id="cntUpdateCar-detail-buttons" class='saveButtons'>
+                <input type="button" class="btn btn-colour orange-button"   value="Update"  ng-click="updateCar()" />
+                <input type="button" class="btn btn-colour red-button"      value="Delete"  ng-click="deleteCar()" />
+                <input type="button" class="btn btn-colour white-button"    value="Close"   ng-click="updateCarCancel()" /><br>
+                <br>               
+                <input type="button" class="btn btn-colour blue-button"     value="Load Photos"    ng-click="setIsShowEnterValues( false )" ng-show="isShow_enterValues" />
+                <input type="button" class="btn btn-colour blue-button"     value="Enter Values"   ng-click="setIsShowEnterValues( true )"  ng-show="!isShow_enterValues" />                
+            </div>
+
+
+        </div>
+
+
+        <!-- -- no results ------------------>
+        <div id='cntUpdateCar-searchResultsCarToUpdate-noResults'   ng-show="isShow_searchResultsCarToUpdate_noResults">
+            <h2>No Car with Given Criteria Found</h2>
+        </div>
+
+    </div>
+
+</div>

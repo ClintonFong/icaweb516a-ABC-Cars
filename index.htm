@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+
+<html lang='en' ng-app="appABCCarFleet">
+
+<head>
+    <meta charset='utf-8' />
+    <meta name='description' content='ABC Car Fleet Systems' />
+    <meta name='keywords' content='ABC Car Fleet Systems' />
+    <meta name='author' content='Clinton Fong' />
+
+    <title>ABC Car Fleet Pty Ltd</title>
+
+<!--    
+    <link type='text/css' rel='stylesheet' href='jquery-ui-1.11.0.custom/jquery-ui.theme.css'  /> 
+-->
+    <link rel='stylesheet' type='text/css' href='app/lib/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' type='text/css' href='app/lib/bootstrap/css/bootstrap-theme.css' />
+
+    <link rel="stylesheet" href="app/lib/angular-loading-bar-master/build/loading-bar.css">
+    <link rel="stylesheet" href="app/lib/angular-bootstrap-lightbox-master/dist/angular-bootstrap-lightbox.css">
+
+    <link rel='stylesheet' type='text/css' href='css/main.css' />
+
+</head>
+
+<body ng-controller='mainController'>
+
+    <div id="wrapper">
+        <!-- header -->
+        <div ng-include="'include/header.htm'"></div>
+        <!-- end header -->
+        
+        <!-- ajax loader processing spinning icon -->
+        <div class="ajaxLoader" ng-show="housekeeping.isShow_ajaxLoader"></div>
+	
+        <!-- Main Content -->
+		<div id='main-content' ng-style="{ 'height' : housekeeping.mainContentHeight }">
+            
+            <div ng-view></div>
+            
+        </div>
+        <!-- end Main Content -->
+
+		<div ng-include="'include/footer.htm'"></div>
+		
+    </div>
+
+
+    <script src="app/lib/angular-1.3.0/angular.min.js"></script>
+    <script src="app/lib/angular-1.3.0/angular-route.js"></script>
+    <script src="app/lib/jquery-1.11.1.min.js"></script>
+    <script src="app/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="app/lib/angular-touch.js"></script>
+    <script src="app/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.11.2.min.js"></script>
+    <script src="app/lib/angular-loading-bar-master/build/loading-bar.js"></script>
+    <script src="app/lib/angular-bootstrap-lightbox-master/dist/angular-bootstrap-lightbox.js"></script>
+    <script src="app/lib/angular-file-upload-master/dist/angular-file-upload.js"></script>
+
+<!--
+<script src="bower_components/angular/angular.js"></script>
+<script src="app/lib/angular-touch.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<script src="app/lib/angular-loading-bar-master/build/loading-bar.js"></script>
+<script src="app/lib/angular-bootstrap-lightbox-master/dist/dist/angular-bootstrap-lightbox.js"></script>
+-->
+
+
+
+    <script src="js/main.js"></script> 
+    <script src="app/app.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/controllers/controllers.js"></script>
+    <script src="app/controllers/handleCarController.js"></script>
+    <script src="app/controllers/handleCustomerController.js"></script>
+    <script src="app/controllers/handleStaffController.js"></script>
+    <script src="app/controllers/handleEnquiriesController.js"></script>
+
+<!--
+    <script src="app/controllers/homeManagerController.js"></script>
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/aboutUsController.js"></script>
+    <script src="app/controllers/ourLocationController.js"></script>
+    <script src="app/controllers/enquiriesController.js"></script>
+    <script src="app/controllers/signInController.js"></script>
+-->
+
+    <!-- Modal Dialogs ------->
+    <!-- Confirm Deletion ---->
+
+    <script type="text/ng-template" id="confirmDeletion.htm">
+
+        <div class="modal-header">
+            <h3 class="modal-title">{{ title }}</h3>
+        </div>
+        <div class="modal-body" >
+            <span>{{message1}}</span><span class='highlight'>{{message1_highlight}}</span><br>
+            <span>{{message2}}</span><span class='highlight'>{{message2_highlight}}</span><br>
+            <br>
+            <span>Do You Wish to Continue?</span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="yes()">Yes</button>
+            <button class="btn btn-warning" ng-click="no()">No</button>
+        </div>
+    </script>
+
+</body>
+</html>
+

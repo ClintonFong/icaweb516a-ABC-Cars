@@ -1,0 +1,802 @@
+/* 
+	Main Containers
+*/	
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    height: 100%;
+    width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial,sans-serif;
+
+    
+    background-color: #EFEFEF; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2F2727), to(#EFEFEF)) fixed; /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-linear-gradient(top, #2F2727, #EFEFEF) fixed; /* Safari 5.1, Chrome 10+ */ 
+    background: -moz-linear-gradient(top, #2F2727, #EFEFEF) fixed; /* Firefox 3.6+ */ 
+    background: -ms-linear-gradient(top, #2F2727, #EFEFEF) fixed; /* IE 10 */ 
+    background: -o-linear-gradient(top, #2F2727, #EFEFEF) fixed; /* Opera 11.10+ */ 
+}
+
+div#wrapper
+{
+    /* background-color : #fefefe; */
+    
+    margin-top: 0px;
+    
+}
+
+
+/*
+	Main Content
+*/
+
+div#main-content
+{
+	clear:both; 
+	padding:0;
+	width: 100%;
+	height:600px;
+	border:0;
+	
+    height: 686px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    
+    position: relative;
+
+}
+
+div#main-content p
+{
+	font-size: 22px;
+	line-height: 26px;
+}
+
+div#top-panel 
+{
+    border: solid #000 1px;
+    margin: 5px 0;
+    padding: 5px;
+    text-align: left;
+}
+
+div#top-panel label
+{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+div#top-panel span
+{
+    margin-right: 40px;    
+}
+
+div#top-panel span.currentInputStage
+{
+    font-size: 24px;
+    color: #f00;
+}
+
+div.main-panel 
+{
+	color:#000;
+	border: 0 1px 1px 1px solid #000;
+    padding: 15px;
+	opacity:1;
+    overflow: visible;
+    text-align: left;    
+}
+
+
+div.left-panel 
+{
+    /*float: left;*/
+    position: absolute;
+    left: 0px;
+    
+    width: 19%; /* 200px; */
+    height: 100%;
+    
+    padding: 8px;
+    
+    background-image: -moz-linear-gradient(0deg, #676363 0%, #ffffff 100%);
+    background-image: -o-linear-gradient(0deg, #676363 0%, #ffffff 100%);
+    background-image: -webkit-linear-gradient(0deg, #676363 0%, #ffffff 100%);
+    background-image: linear-gradient(0deg, #676363 0%, #ffffff 100%);    
+    
+   
+}
+
+div.right-panel 
+{
+    /* float: right; */
+    position: absolute;
+    right: 0px;
+
+    width: 80%; /* 824px; */
+}
+
+			 
+/* 
+    Sign-in bar 
+*/
+div#cntTopSignInBar
+{
+    text-align: right;
+    background-color: #2f2727; /* #8E969B */
+    width: 100%;
+    height: 32px;
+    padding: 4px 0px;
+}
+
+div#cntTopSignInBar input
+{
+    width: 150px;
+    height: 24px;
+}
+
+div#cntTopSignInBar div.inlineBlock input[type=submit]#btnSigninBar
+{
+    width: 60px;
+    height: 100%;
+    background-image: -moz-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(0deg, #575353 0%, #efedee 100%);     
+}
+
+div#cntTopSignInBar div.inlineBlock label,
+div#cntTopSignInBar div.inlineBlock a
+{
+    color: #6d6d6d;
+    text-decoration: none;
+}
+
+div#cntTopSignInBar div.inlineBlock label
+{
+    font-size: 14px;
+}
+
+div#cntTopSignInBar div.inlineBlock a:hover,
+div#cntTopSignInBar div.inlineBlock input[type=submit]:hover
+{
+    cursor: pointer;
+}
+
+.inlineBlock
+{
+    display: inline-block;
+}
+
+
+
+/* 
+	Banner & Logo Layer
+*/
+
+
+
+div#header
+{
+    /*margin-top: 20px;*/
+    clear:  both;
+    background: #efeded; 
+    height: 90px;
+    
+    
+}
+
+div#logo
+{ 
+    float:left; 
+    position: relative;
+    left: 31px;
+    top: 5px;   
+}
+img#imgLogo
+{
+    margin-bottom: 10px;
+}
+
+h1#h1Logo
+{
+    text-shadow: 0 2px 0 #fff;
+    font-size: 38px;  
+    color: #AFA67D;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+/* carousel */
+#carouselBanner
+{
+    float: right;
+    margin: 0px 50px 0 0;  
+    width: 50%;	
+    background-color:  transparent;
+}
+
+.carousel-control.left,
+.carousel-control.right
+{
+    background-image: none;
+    opacity: 0;
+    filter: alpha(opacity=0); /* IE Support */
+}
+
+.carousel-control.left:hover,
+.carousel-control.right:hover
+{
+    cursor: pointer;
+    opacity: 1;
+    filter: alpha(opacity=1); /* IE Support */
+}
+
+.carousel-indicators
+{
+    display: none;
+}
+
+
+img
+{  
+    margin: auto; 
+}
+
+/* menus */
+
+
+/* cntTopMenu */
+
+#cntTopMenu
+{
+    color: #FFDF94;
+    text-align: right;
+    
+    position: absolute;
+    bottom: 0; 
+    right: 0; 
+    
+}
+
+#cntTopMenu ul li a        
+{ 
+    padding: 5px 10px;
+    text-decoration: none;  
+    color: #FFDF94;
+        
+    border: 1px solid #AFA67D;
+    border-radius: 5px; /* rounding corners */
+
+}
+
+#cntTopMenu ul li a:hover  
+{ 
+/*  color: #0094ff; */
+    color: #FFE62E;
+
+    border: 0;
+    background-color: rgb(0, 0, 0);                 /* Fallback for web browsers that don't support RGBa */
+    background-color: rgba(0, 0, 0, 0.2);           /* RGBa with 0.6 opacity */
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);              /* For IE 5.5 - 7*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";       /* For IE 8*/   
+}
+
+
+/* main nav bar */
+
+#cntMainNavBar
+{
+    width: 100%;
+    background-color: #64BA19; /* #867D52; */
+    border-top: 1px solid #fff;
+
+    height: 40px;
+    text-align: right;
+    padding-right: 5px;
+    
+    background-image: -moz-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(0deg, #575353 0%, #efedee 100%);    
+}
+
+
+#cntMainNavBar span#cntWelcomeMember 
+{
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 12px;
+    color:#fff;
+}
+
+li
+{
+    cursor: pointer;
+}
+
+#nav-menu > li
+{
+    display: inline-block;
+    padding: 2px 10px;
+}
+
+/* cntMainNavMenu */
+
+#cntMainNavMenu
+{
+    float: left;
+    height: 100%;
+/*    width: 100%; */
+    
+/*    border-bottom: 2px solid #aaa; */
+/*   
+    padding-left: 30px;
+    padding-right: -30px;
+  */ 
+   
+}
+
+
+#cntMainNavMenu ul#nav-menu
+{
+    height: 100%;
+    height: 40px;
+    padding-left: 30px;
+    display: flex;
+}
+
+#cntMainNavMenu li
+{
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 100%;
+    vertical-align: middle;
+    
+    border-left: 1px solid #fff;
+    
+    /* background-color: #053900; */
+    
+
+    /* from JS Fiddle http://jsfiddle.net/fedosov/xepX4/2/ */    
+/*    
+    color: #fff;
+    padding: 4px 8px 5px;
+    border: 1px solid #9fa3a7; 
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #64BA19; 
+    box-shadow:
+        0 1px 0 rgba(0,0,0,.08),
+        inset 0 1px 2px rgba(255,255,255,.67),
+        inset 0 -1px 0 rgba(0,0,0,.14);
+    
+    background-image: -moz-linear-gradient(0deg, #64BA19 0%, #4A9613 100%);
+    background-image: -o-linear-gradient(0deg, #64BA19 0%, #4A9613 100%);
+    background-image: -webkit-linear-gradient(0deg, #64BA19 0%, #4A9613 100%);
+    background-image: linear-gradient(0deg, #64BA19 0%, #4A9613 100%);    
+    */
+    
+}
+
+#cntMainNavMenu li span
+{
+    display:  inline-block;
+    vertical-align:  middle;
+    line-height: 37px;
+}
+
+#cntMainNavMenu li.selected-menu
+{
+    background-color: #125102; 
+    background-image: -moz-linear-gradient(0deg, #448A13 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(0deg, #448A13 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(0deg, #448A13 0%, #125102 100%);
+    background-image: linear-gradient(0deg, #ffffff 0%, #aaaaaa 100%);    
+    
+}
+
+#cntMainNavMenu li.selected-menu a
+{
+    color: #ff6a00;
+}
+
+#cntMainNavMenu ul li,
+#cntMainNavMenu ul li a        
+{ 
+    text-decoration: none;  
+    color: #ddd;
+}
+
+#cntMainNavMenu ul li a:hover  
+{ 
+    color: #FFE000; /* #ff6a00; */
+    text-shadow: 0px 3px 18px #00ff00;
+}
+
+
+
+
+/* align tops of cntLeftMenu & cntOrderForm */
+
+#cntLeftMenu,
+#cntOrderForm
+{
+    margin-top:10px;
+}
+
+/* cntLeftMenu */
+
+#cntLeftMenu
+{
+}
+
+
+
+#cntLeftMenu ul.left-menu 
+{
+}
+
+#cntLeftMenu ul.left-menu li
+{
+    display: block;
+    color: #222;
+    text-decoration: none;
+    padding:  0 0 0 15px;
+}
+
+
+#cntLeftMenu ul.left-menu li:hover
+{
+    color: #fff;
+    background-color: #64BA19;
+    background-image: -moz-linear-gradient(90deg, #64BA19 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: linear-gradient(90deg, #64BA19 0%, #125102 100%);          
+}
+
+#cntLeftMenu ul.left-menu li.selected-menu
+{
+    background-color: #64BA19;
+    background-image: -moz-linear-gradient(90deg, #64BA19 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: linear-gradient(90deg, #125102 0%, #64BA19 100%);       
+}
+
+#cntLeftMenu ul.left-menu li.selected-menu a
+{
+    color: #FFE000;
+}
+
+#cntLeftMenu ul.left-menu li.selected-menu div
+{
+    float:right; 
+    color: #555;
+}
+
+/*
+#cntLeftMenu ul#left-menu li a:link{color: blue; text-decoration:none;}
+#cntLeftMenu ul#left-menu li a:visited{color: red; text-decoration:none;}
+#cntLeftMenu ul#left-menu li a:hover{color: red; text-decoration:none;}
+#cntLeftMenu ul#left-menu li a:active{color: red; text-decoration:none;}
+*/
+    
+/* Order form */
+
+div#cntOrderForm
+{
+    color: #4285F4;
+    border: 1px solid #4285F4;
+    background-color: #fff; 
+    
+    width: 96%;
+    height: 433px;
+    padding: 5px;
+    
+    position: relative;
+}
+
+
+
+
+/*
+	Footer
+*/
+div#footer 
+{ 
+    text-align:center; 
+
+    color: #fff;
+    background-color: #575353; 
+    line-height: 45px;
+    
+    background-image: -moz-linear-gradient(180deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(180deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(180deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(180deg, #575353 0%, #efedee 100%);    
+    
+}
+
+div#footer-links a { color: #fff; }
+div#footer-links a:hover { color: #00ff00; font-weight: bold; }
+
+#copyright { padding-right: 20px; }
+#designed-by { padding-right: 20px; }
+
+
+
+/*
+    General
+*/
+button
+{
+    width: 80px;
+}
+
+input
+{
+    padding-left    : 2px;
+}
+
+img
+{
+    padding: 0;
+    margin:  0;
+    max-width: 100%;
+}
+
+label.required:before,
+legend.required:before  
+{
+    color:  #ff0000;
+    content:' *';
+    display: inline;
+}
+
+label.important
+{
+    color:  #cf0000;
+}
+
+label.error
+{
+    background-color: #ffff33;
+}
+
+
+
+legend
+{
+    padding:  0.2em 0.5em;
+    border:  1px solid #555;
+    font-weight: bold;
+}
+
+.inputStyleDashed
+{
+    margin-top: 10px;
+    border: 0px;
+    border-bottom: dashed 1px #777;
+    font-size: 18px;
+}
+
+.gray   { background-color: #ccc; }
+.red    { color: #f00; }
+.green  { color: #0a0; }
+
+
+span.dbFeedbackMessage
+{
+    color: #fff;
+}
+
+.alignRight
+{
+    text-align: right;
+    padding-right: 2px;
+}
+
+.alignLeft
+{
+    text-align: left;
+}
+
+/* ------------------------------------------------------------------ */
+/* buttons */
+
+div.btn-colour,
+input.btn-colour
+{
+    width: 117px;
+
+    color: #fff;
+    padding: 4px 8px 5px;
+    border: 1px solid #9fa3a7; 
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    
+    background-clip: padding-box;
+    box-shadow:
+        0 1px 0 rgba(0,0,0,.08),
+        inset 0 1px 2px rgba(255,255,255,.67),
+        inset 0 -1px 0 rgba(0,0,0,.14);
+}
+
+
+div.blue-button,
+input.blue-button
+{
+    background-image: -moz-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: -o-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: -webkit-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);    
+}
+
+input.green-button
+{
+    background-image: -moz-linear-gradient(0deg, #125102 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(0deg, #125102 0%, #64BA19 100%);
+    background-image: -webkit-linear-gradient(0deg, #125102 0%, #64BA19 100%);
+    background-image: linear-gradient(0deg, #125102 0%, #64BA19 100%);          
+}
+
+input.orange-button
+{
+    background-image: -moz-linear-gradient(0deg, #ff2a00 0%, #ff9a00 100%);
+    background-image: -o-linear-gradient(0deg, #ff2a00 0%, #ff9a00 100%);
+    background-image: -webkit-linear-gradient(0deg, #ff2a00 0%, #ff9a00 100%);
+    background-image: linear-gradient(0deg, #ff2a00 0%, #ff9a00 100%);    
+}
+
+input.red-button
+{
+    color           : #fff;
+    background-image: -moz-linear-gradient(0deg, #ff0000 0%, #ff0000 100%);
+    background-image: -o-linear-gradient(0deg, #ff0000 0%, #ff0000 100%);
+    background-image: -webkit-linear-gradient(0deg, #ff0000 0%, #ff0000 100%);
+    background-image: linear-gradient(0deg, #aa0000 0%, #ff0000 100%);    
+}
+
+input.white-button
+{
+    color           : #555;
+    background-image: -moz-linear-gradient(0deg, #aaaaaa 0%, #ffffff 100%);
+    background-image: -o-linear-gradient(0deg, #aaaaaa 0%, #ffffff 100%);
+    background-image: -webkit-linear-gradient(0deg, #aaaaaa 0%, #ffffff 100%);
+    background-image: linear-gradient(0deg, #aaaaaa 0%, #ffffff 100%);    
+}
+
+
+/* ---------------------------------------------------------------------------------------*/
+/* Ajax Loading Icon - used example from http://www.sitepoint.com/css3-ajax-loading-icon/  and modified */
+/* ---------------------------------------------------------------------------------------*/
+
+.ajaxLoader
+{
+	position: fixed;
+    left: 50%;
+    right: 50%;
+    top: 45%;
+	width: 100px;
+	height: 100px;
+	border: 15px solid #aaa;
+	border-right-color: transparent;  
+	border-radius: 50%;
+	box-shadow: 0 0 25px 2px #eee;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin
+{
+	from { transform: rotate(0deg);   opacity: 0.2; }
+	50%  { transform: rotate(180deg); opacity: 1.0; }
+	to   { transform: rotate(360deg); opacity: 0.2; }
+}
+
+/* ------------------------------------------------------------------   */
+/* errorbox */
+.alert
+{
+    text-align: left;   
+}
+
+/* ------------------------------------------------------------------   */
+#cntAboutUs,
+#cntOurLocation
+{
+    width: 100%;
+    height: 500px;
+    text-align: left;
+    
+    border: 2px solid #4285F4;
+    padding: 10px 10px 10px 50px;
+    border-radius: 5px;
+    
+}
+
+#cntAboutUs h1,
+#cntOurLocation h1
+{
+    color: #000; 
+    font-weight: bold;
+    margin-top: 0px;
+    padding-top: 20px;
+    border-bottom: 1px solid #aaa;
+}
+
+#cntAboutUs p,
+#cntOurLocation p
+{
+    font-size: 14px;
+}
+
+#cntAboutUs p label
+{
+    color: #ff6a00;
+    width: 220px;
+    /*text-shadow: 12px 2px 2px #555; */
+}
+
+/* ------------------------------------------------------------------   */
+/* tweaks to the angularjs classes                                      */
+
+textarea.ng-pristine.ng-invalid-required,
+input.ng-pristine.ng-invalid-required 
+{
+    box-shadow: none;
+}
+
+textarea.submitted.ng-invalid,
+input.submitted.ng-invalid
+{
+    border: 1px solid #f00;
+}
+
+/* ------------------------------------------------------------------ */
+/* -------------------- Making screen responsive -------------------- */
+
+@media screen and (max-width: 1024px)
+{
+
+    body
+    {
+        width: auto;
+    }
+
+    div#cntTopSignInBar 
+    {
+        height: auto;
+    }
+}

@@ -1,0 +1,66 @@
+<!-- 
+  --  display sign-in bar if not signed in
+  -->
+
+<div ng-if="!housekeeping.user.isLoggedIn" id='cntTopSignInBar' ng-controller="mainController">
+    <form name='frmSigninBar' ng-submit='doSignIn()'>
+
+        <input type='hidden' name='actionTaken' value='validate-member-login' />
+
+        <div id='cntSignInItem1' class='inlineBlock'>
+            <label>Sign-in Email / User ID:</label>
+            <input name='signinEmail' id='signinSigninEmail' type ='text' value="{{ email }}" ng-model="email" />
+        </div>
+
+        <div id='cntSignInItem2' class='inlineBlock'>
+            <label>Password:</label>
+            <input name='password' id='signinBarPassword' type ='password' value="{{ password }}" ng-model="password" />
+        </div>
+
+        <div id='cntSignInItem3' class='inlineBlock'>
+            <input id='btnSigninBar' type ='submit' value='Sign-in' />
+            <a id='aSigninBarRegister' href='#/signIn/1'>*Join</a>
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- 
+  -- display logo 
+  -->
+<div id='header'>
+    <div id='logo'>
+    	<img id='imgLogo' src='images/logo-icaweb516a.png' alt='ABC Car Fleet Pty Ltd' />
+    </div>
+
+    <carousel id='carouselBanner' interval="slideInterval">
+        <slide ng-repeat="slide in slides" active="slide.active" >
+            <img ng-src="{{slide.image}}" style="margin:auto;" >
+            <div class="carousel-caption">Visit one of our Showrooms Today</div>
+        </slide>
+    </carousel>
+
+</div>
+
+
+<!-- 
+  -- display main navigation menu 
+  -->
+<div id='cntMainNavBar'>
+    <nav id='cntMainNavMenu'>
+        <ul id='nav-menu'>
+            <li ng-repeat="item in housekeeping.navMenuItems" 
+                ng-class="{ 'selected-menu' : item.menuItemKey == housekeeping.selectedNavMenuItemKey }">
+
+                <span><a href="{{ item.href }}">{{ item.name }}</a></span> 
+            </li>
+        </ul>
+    </nav>
+
+
+    <span id='cntWelcomeMember'>{{ housekeeping.strWelcomeUser }}</span>
+
+</div>
+

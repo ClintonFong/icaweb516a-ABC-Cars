@@ -1,0 +1,257 @@
+/* 
+	Main Containers
+*/	
+
+div#main-content
+{
+    height: 456px;
+}
+
+#main-panel
+{
+    margin: 0;
+    padding: 20px;
+    border: 0 1px 1px 1px solid #ccc;
+    height: 400px;
+}
+
+#cntSigninBox,
+#cntRegisterBox
+{
+    display: block;
+    margin-top: 30px;
+}
+
+#legendSignin
+{
+    /* color: #D2F643;   */
+    /* color: #DC4100;  */
+    color: Green;
+    border-color: #FFf080;
+    text-align: left;
+    padding: 0.4em 0.5em;
+    
+/*    
+    background-image: -moz-linear-gradient(90deg, #64BA19 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: linear-gradient(90deg, #64BA19 0%, #125102 100%);    
+*/    
+    
+    background-image: -moz-linear-gradient(90deg, #ffffff  0%, #FFE000 100%);
+    background-image: -o-linear-gradient(90deg, #ffffff  0%, #FFE000 100%);
+    background-image: -webkit-linear-gradient(90deg, #ffffff 0%, #FFE000 100%);
+    background-image: linear-gradient(90deg, #ffffff 0%, #F0A05C 100%);    
+ 
+}
+
+#fldsetSignin,
+#fldsetRegister
+{
+    clear: both;
+    height: 162px;
+    width: 420px;
+    border:  1px solid #ADADAD;
+    margin: 10px 20px 15px 20px; 
+    padding: 0px 1px;
+    float: left;  
+    text-align: right;
+    
+    background-color: #fff;
+    background-image: -moz-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(0deg, #918D8E 0%, #efedee 100%);    
+    
+    
+}
+
+
+div#cntRegisterTitle,
+div#cntSigninTitle
+{
+    height: 27px;
+    width: 100%;
+
+    margin: 0px;
+    padding-left: 3px;
+    padding-top: 5px;
+        
+    color: #fff;
+    background-color: #D41A1B;
+    background-image: -moz-linear-gradient(0deg, #A10304 0%, #EAEA02 100%);
+    background-image: -o-linear-gradient(0deg, #A10304 0%, #EAEA02 100%);
+    background-image: -webkit-linear-gradient(0deg, #A10304 0%, #EAEA02 100%);
+    background-image: linear-gradient(0deg, #A10304 0%, #EAEA02 100%);    
+    
+    
+    font-weight: bold;
+    text-align: left;
+}
+
+div#cntRegisterDetails,
+div#cntSigninDetails
+{
+    padding: 10px 5px 0 5px;
+    background-color: none;
+}
+
+div#cntRegisterDetails input,
+div#cntSigninDetails input
+{
+    background-color: #DDF0CC;   
+}
+
+
+#fldsetRegister
+{
+    height: 270px;
+}
+
+div#cntRegisterTitle
+{
+    color: #fff;
+    background-color: #D41A1B;
+    background-image: -moz-linear-gradient(0deg, #610304 0%, #EAEA02 100%);
+    background-image: -o-linear-gradient(0deg, #610304 0%, #EAEA02 100%);
+    background-image: -webkit-linear-gradient(0deg, #610304 0%, #EAEA02 100%);
+    background-image: linear-gradient(0deg, #A10304 0%, #EAEAE2 100%);    
+}
+
+
+
+label
+{
+    font-size: 12px;
+    line-height: 20px;
+    color: #6D6D6D;
+}
+
+
+input
+{
+    width: 250px;
+    height: 22px;
+}
+
+
+#btnRegister,
+#btnSignin
+{ 
+  
+    width: 105px;
+    height: 29px;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+    
+    
+    
+    /* from JS Fiddle */    
+    color: #fff;
+    padding: 4px 8px 5px;
+    border: 1px solid #9fa3a7; 
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #64BA19;  /* #008fcf; */
+    box-shadow:
+        0 1px 0 rgba(0,0,0,.08),
+        inset 0 1px 2px rgba(255,255,255,.67),
+        inset 0 -1px 0 rgba(0,0,0,.14);
+    
+/*
+    background-image: -moz-linear-gradient(90deg, #64BA19 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: linear-gradient(90deg, #64BA19 0%, #125102 100%);    
+*/    
+    background-image: -moz-linear-gradient(90deg, #A10304 0%, #EAEA02 100%);
+    background-image: -o-linear-gradient(90deg, #A10304 0%, #EAEA02 100%);
+    background-image: -webkit-linear-gradient(90deg, #A10304 0%, #EAEA02 100%);
+    background-image: linear-gradient(90deg, #A10304 0%, #EAEA02 100%);    
+    
+}
+
+#btnRegister
+{
+    background-image: -moz-linear-gradient(90deg, #610304 0%, #EAEA02 100%);
+    background-image: -o-linear-gradient(90deg, #610304 0%, #EAEA02 100%);
+    background-image: -webkit-linear-gradient(90deg, #610304 0%, #EAEA02 100%);
+    background-image: linear-gradient(90deg, #A10304 0%, #EAEAE2 100%);    
+
+}
+
+
+#aForgotPassword
+{
+/*    width: 75px; */
+    color: #555;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-block;
+    padding-top: 5px;
+    text-align: left;
+    margin-right:21px;
+}
+
+#lblMsgSignin,
+#lblMsgRegister
+{
+    position: relative;
+    text-align: right;
+    top: 10px;
+}
+
+
+
+
+/* Register/Sign-in hrefs */
+#cntRegisterHref,
+#cntSigninHref
+{
+    clear: right;
+    float: left;
+    margin-left: 390px;
+    margin-bottom: 5px;
+    
+    position:  relative;
+    top: 15px;
+}
+
+#cntRegisterHref
+{
+    margin-left: 405px;
+}
+
+.toggleSignInDisplay
+{
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.toggleSignInDisplay:hover
+{
+    cursor: pointer;
+    text-decoration: none;   
+}
+
+#errorBox
+{
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+}
+
+#errorBox label
+{
+    font-size: 14px;
+    color: #53101B;
+}

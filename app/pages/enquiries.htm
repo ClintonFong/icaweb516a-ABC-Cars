@@ -1,0 +1,42 @@
+<!-- template for Enquiries page -->
+
+<div id='main-panel'>
+
+    <div id="cntEnquiry">
+
+        <h2>Please enter your enquiry and click Submit</h2>
+        <h3>We will get back to you as soon as we can</h3>
+
+        <div class="message-boxes">
+            <!-- errorBox --------------------------->
+            <div id="errorBox-addCar" ng-show="isShowErrorBox_enquiry"> 
+                <alert type="danger"><label>{{ errorLabel }}</label> {{ errorMessage }}</alert>
+            </div>
+
+            <!-- successBox --------------------------->
+            <div id="successBox-addCar" ng-show="isShowSuccessBox_enquiry"> 
+                <alert type="success">{{ successMessage }}</alert>
+            </div>
+        </div>
+
+
+        <div class="enterValues">
+            <div class='cnt1Item'>
+                <label>Car Rego:</label>                        
+                <input type='text' class="inputField" value="{{ formData_enquiry.rego}}" ng-model="formData_enquiry.rego" ng-class="{submitted:checkSubmitEnquiry.isSubmitted}" />
+            </div>
+            <div class='cnt1Item'>
+                <label class="required">Enquiry:</label>                        
+                <textarea class="inputField" ng-model="formData_enquiry.enquiry" ng-class="{submitted:checkSubmitEnquiry.isSubmitted}" required>{{ formData_enquiry.enquiry}}</textarea>
+            </div>
+        </div>
+
+        <!-- -------------- Submit button ----------------->  
+        <div id='cntSubmit'>
+            <input  type="button" class="btn btn-colour orange-button" value="Submit" ng-click="submitEnquiry()" />
+        </div>
+
+    </div>
+
+</div>
+

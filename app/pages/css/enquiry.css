@@ -1,0 +1,59 @@
+#main-panel
+{
+    margin-top: 0px;
+    padding: 15px;
+}
+
+div#cntEnquiry
+{
+    border: 2px solid #4285F4;
+    width: 100%;
+    height: 450px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;    
+}
+
+div#cntEnquiry label
+{
+    width: 100px;
+    vertical-align: top;
+    text-align: right;
+    
+}
+
+.enterValues
+{
+    border-radius   : 5px;
+
+    border          :  1px solid #ADADAD;
+    margin          : 30px 0px 10px 0px; 
+    text-align      : left;
+    padding         : 20px 10px 20px 20px;
+    
+    background-color: #fff;
+    background-image: -moz-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(0deg, #918D8E 0%, #F9F9F9 100%);    
+}
+
+.inputField
+{
+    width: 400px;
+}
+
+textarea
+{
+    height: 100px;
+    resize: none;
+}
+
+
+div#cntEnquiry .alert label
+{
+    text-align: left;
+    width: 70px;
+}
+
+

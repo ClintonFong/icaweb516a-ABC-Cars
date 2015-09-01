@@ -1,0 +1,218 @@
+<!-- template for index page -->
+
+<div class='main-panel'>
+
+    <div id='cntContent'>
+        <div id='cntContent-leftPanel'>
+
+            <!-- --------------------------------------------------- -->
+            <div id='cntLookUpCars'>
+
+                <div id='cntSearchCars'>
+
+                    <form name='frmSearchCars' action='index.php' target='_self' method ='post'>
+
+                        <h3>Search for Cars</h3>
+
+                        <input type='hidden' name='actionTaken' value='search-cars' />
+
+                        <tabset id="searchCarTabs">
+                            <tab heading='Make &amp; Model'><div id='tabSearchCarSimple-MakeModel' ng-include="'app/pages/component/tabSearchCarSimple-MakeModel.htm'"></div></tab>
+                            <tab heading='Location'><div id='tabSearchCarSimple-Location'>Location</div></tab>
+                            <tab heading='Category'><div id='tabSearchCarSimple-Category'>Category</div></tab>
+                            <tab heading='Special Offers'><div id='tabSearchCarSimple-SpecialOffers'>Special Offers</div></tab>
+                        </tabset>
+
+                    </form>
+
+                </div> <!-- cntSearchCars -->
+
+                <div id='cntBrowseCars'>
+                    <form name='frmBrowseCars' action='index.php' target='_self' method ='post'>
+
+                        <h3>Browse Cars</h3>
+
+                        <input type='hidden' name='actionTaken' value='browse-cars' />
+
+
+                    </form>
+
+                </div> <!-- cntBrowseCars -->
+            </div> <!-- cntLookUpCars -->
+
+            <!-- --------------------------------------------------- -->
+            <div id='cntLookUpCarResults'>
+
+                <!-- -- listing --------------------->
+                <div id='cntLookUpCarResults-listing'     ng-show="isShow_lookUpCarResults_listing">
+                    <label class='important'>Double click on Selected Car Listing to View</label>
+                    <table>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Rego</th>
+                            <th>VIN</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr ng-repeat="car in searchForCarResultsCollection | startFrom: (paginationCurrentPage-1)*paginationPageSize | limitTo: paginationPageSize" ng-dblclick="selectCarFromListing( car )">
+                            <td><img ng-src="{{ car.photoFilename }}" alt="Car Photo" class="car-listing-thumbnail" /></td>
+                            <td>{{ car.rego }}</td>
+                            <td>{{ car.VIN }}</td>
+                            <td>{{ car.make }}</td>
+                            <td>{{ car.model }}</td>
+                            <td>{{ car.year }}</td>
+                            <td>{{ car.price | currency }}</td>
+                        </tr>
+                    </table>
+
+                    <pagination total-items     = "searchForCarResultsCollection.length" 
+                                items-per-page  = "paginationPageSize"
+                                ng-model        = "paginationCurrentPage">
+                    </pagination>
+
+
+                </div>
+
+                <!-- -------------- Display Values ----------------->
+                <div id="cntLookUpCarResults-detail" ng-show="isShow_lookUpCarResults_detail" class="enterValues">
+
+                    <a ng-click="goBackToCarToResultListing()">&larr; Back to Listing</a>
+
+                    <div id="cntBtnViewPhotos" class="viewPhotosButton">
+                        <input type="button" class="btn-colour green-button"    value="View Photos"   ng-click="viewPhotos()" /><br>
+                    </div>
+
+                    <!-- ---------------- Registration --------------------------------->
+                    <div class='section-heading'>Registration</div>
+
+                    <div id='cntIsNew-lookUpCarResults' class='cnt1Item'>
+                        <label>Is New Car:</label>
+                        <input type='checkbox' ng-checked="formData_searchCarResult.isNewCar" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntRego-lookUpCarResults' class='cnt1Item'>
+                        <label>Rego:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.rego }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntVIN-lookUpCarResults' class='cnt1Item'>
+                        <label>VIN:</label>
+                        <input type='text' class="inputField" value='{{ formData_searchCarResult.VIN }}' ng-disabled="true" />
+                    </div>
+
+
+                    <br>
+                    <!-- ---------------- Make & Price --------------------------------->
+                    <div class='section-heading'>Make &amp Price</div>
+
+
+                    <div id='cntMakeModel-lookUpCarResults'class ='cnt2Items'>   
+                        <div id='cntAddNewMake-lookUpCarResults' class='cntItem1'>
+                            <label>Make:</label>
+                            <input type='text' class="inputField" value='{{ formData_searchCarResult.make }}' ng-disabled="true" />
+                        </div>
+
+                        <div id='cntAddNewModel-lookUpCarResults' class='cntItem2'>
+                            <label>Model:</label>
+                            <input type='text' class="inputField" value='{{ formData_searchCarResult.model }}' ng-disabled="true" />
+                        </div>
+                    </div>
+
+                    <div id='cntYear-lookUpCarResults' class='cnt1Item'>
+                        <label>Year:</label>
+                        <input type='text' class="inputField alignRight" value="{{ formData_searchCarResult.year }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntPrice-lookUpCarResults' class='cnt1Item'>
+                        <label>Price:</label>
+                        <input type='text' class="inputField alignRight" value="{{ formData_searchCarResult.price | currency }}" ng-disabled="true" />
+                    </div>
+
+                    <br>
+                    <!-- ---------------- Engine --------------------------------->
+                    <div class='section-heading'>Engine</div>
+
+                    <div id='cntTransmission-lookUpCarResults' class='cnt1Item'>
+                        <label>Transmission:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.transmission }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntFuelType-lookUpCarResults' class='cnt1Item'>
+                        <label>Fuel Type:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.fuelType }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntDriveType-lookUpCarResults' class='cnt1Item'>
+                        <label>Drive Type:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.driveType }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntCylinders-lookUpCarResults' class='cnt1Item'>
+                        <label>Cylinders:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.cylinders }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntKilometres-lookUpCarResults' class='cnt1Item'>
+                        <label>Kilometres:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.kilometres }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntEngineSizeCCs-lookUpCarResults' class='cnt1Item'>
+                        <label>Engine Size (CCs):</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.engineSizeCCs }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntPowerkW-lookUpCarResults' class='cnt1Item'>
+                        <label>Power (kW):</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.powerkW }}" ng-disabled="true" />
+                    </div>
+
+                    <br>
+                    <!-- ---------------- Style --------------------------------->
+                    <div class='section-heading  section-heading-color1'>Style</div>
+
+                    <div id='cntBodyType-lookUpCarResults' class='cnt1Item'>
+                        <label>Body Type:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.bodyType }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntSeats-lookUpCarResults' class='cnt1Item'>
+                        <label>Seats:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.seats }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntDoors-lookUpCarResults' class='cnt1Item'>
+                        <label>Doors:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.doors }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntColourInterior-lookUpCarResults' class='cnt1Item'>
+                        <label>Interior Colour:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.colourInterior }}" ng-disabled="true" />
+                    </div>
+
+                    <div id='cntColourExterior-lookUpCarResults' class='cnt1Item'>
+                        <label>Exterior Colour:</label>
+                        <input type='text' class="inputField" value="{{ formData_searchCarResult.colourExterior }}" ng-disabled="true" />
+                    </div>
+
+
+                </div>
+
+
+
+            </div> <!-- cntLookUpCarResults -->
+
+        </div> <!-- cntContent-leftPanel -->
+
+        <div id='cntContent-rightPanel'>
+            <img id='imgFeatured' src='images/featured-ferrari.png' />
+            <img id='imgFeatured' src='images/car-news.png' />
+            <img id='imgFeatured' src='images/car-reviews.png' />
+        </div> <!-- cntContent-rightPanel -->
+
+    </div> <!-- content -->
+
+</div>

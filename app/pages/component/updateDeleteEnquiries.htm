@@ -1,0 +1,202 @@
+<!-- 
+    enquiries
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="enquiriesPage" class="rightPanel" ng-controller="handleEnquiriesController">
+    <h1>Enquiries</h1>
+
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Enter Search Parameters for Enquiry to Update ------------>  
+    <!-- -------------------------------------------------------------->
+    
+    <fieldset id='fldsetUpdateEnquiry' class="fldsetUpdateDelete">
+        <legend ng-click="isCollapsed_getEnquiryToUpdate = !isCollapsed_getEnquiryToUpdate">Get Enquiries</legend>
+
+        <div id='cntUpdateEnquiry-getEnquiryToUpdate' collapse="isCollapsed_getEnquiryToUpdate">
+
+            <!-- -------------- Enter Values ----------------->  
+            <div id='cntEnterValues-updateEnquiry-search'>
+
+                <div class='cnt1Item'>
+                    <label>First Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateEnquiry.firstname }}" ng-model="formData_updateEnquiry.firstname" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Last Name:</label>                        
+                    <input type='text' class="inputFieldUser" value="{{ formData_updateEnquiry.lastname }}" ng-model="formData_updateEnquiry.lastname"  />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Sign-in Email:</label>                        
+                    <input type='email' class="inputFieldUser" value="{{ formData_updateEnquiry.email }}" ng-model="formData_updateEnquiry.email" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>Primary Phone:</label>                        
+                    <input type ='text' class="inputFieldUser" value="{{ formData_updateEnquiry.phone }}" ng-model="formData_updateEnquiry.phone" />
+                </div>
+                <div class='cnt1Item'>
+                    <label>From Date:</label> 
+                    <div class="input-group">
+                        <input type="text" class="date-field" datepicker-popup="{{ dateFormat }}" ng-model="formData_updateEnquiry.dateFrom" is-open="fromDatePickerOpened" value="{{ formData_updateEnquiry.dateFrom }}" disabled />
+                        <button type="button" class="btn-date" ng-click="openFromDatePicker( $event )"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>                        
+<!--                    <input type ='text' class="inputFieldUser" value="{{ formData_updateEnquiry.date }}" ng-model="formData_updateEnquiry.date" />-->
+                </div>
+                <div class='cnt1Item'>
+                    <label>To Date:</label> 
+                    <div class="input-group">
+                        <input type="text" class="date-field" datepicker-popup="{{ dateFormat }}" ng-model="formData_updateEnquiry.dateTo" is-open="toDatePickerOpened" value="{{ formData_updateEnquiry.dateTo }}" disabled />
+                        <button type="button" class="btn-date" ng-click="openToDatePicker( $event )"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>                        
+<!--                    <input type ='text' class="inputFieldUser" value="{{ formData_updateEnquiry.date }}" ng-model="formData_updateEnquiry.date" />-->
+                </div>
+
+
+                <!-- <input type="button" value="click to check value of dates..." ng-click="doTest()"> -->
+            </div>
+
+            <!-- -------------- Retrieve Enquiry button ----------------->  
+            <div id='cntGetEnquiryButton-updateEnquiry-search' class="searchButtons">
+                <input  type="button" class="btn btn-colour blue-button" value="Get Enquiry"    ng-click="getEnquiryToUpdate()" /><br>
+                <input  type="button" class="btn btn-colour white-button" value="Clear Fields"  ng-click="clearEnquiryToUpdateFields()" />
+            </div>
+        </div>
+
+    </fieldset>
+
+    <!-- -------------------------------------------------------------->
+    <!-- -- Enquiry to Update Listing/Individual -------------------------->  
+    <!-- -------------------------------------------------------------->
+    <div id='cntUpdateEnquiry-searchResultsEnquiryToUpdate' collapse="isCollapsed_searchResultsEnquiryToUpdate"> 
+
+        <!-- errorBox --------------------------->
+        <div id='errorBox-updateEnquiry' ng-show="isShowErrorBox_updateEnquiry">
+            <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+        </div>
+
+        <!-- successBox --------------------------->
+        <div id='successBox-updateEnquiry' ng-show="isShowSuccessBox_updateEnquiry">
+            <alert type="success">{{ successMessage }}</alert>
+        </div>
+
+
+        <!-- -- listing --------------------->
+        <div id='cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing'     ng-show="isShow_searchResultsEnquiryToUpdate_listing"> 
+            <label class='important'>Double click on Selected Enquiry Listing to View</label>
+            <table>
+                <tr>
+                    <th>Date Lodged</th>
+                    <th>LASTNAME</th>
+                    <th>Firstname</th>
+                    <th>Status</th>
+                </tr> 
+                <tr ng-repeat="enquiry in enquiriesToUpdateCollection | startFrom: (paginationCurrentPage-1)*paginationPageSize | limitTo: paginationPageSize" ng-dblclick="selectEnquiryFromListing( enquiry )">
+                    <td>{{ enquiry.dateLodged }}</td>
+                    <td>{{ enquiry.lastname }}</td>
+                    <td>{{ enquiry.firstname }}</td>
+                    <td>{{ getEnquiryStatusForListing( enquiry ) }}</td>
+                </tr>
+            </table>
+
+            <pagination total-items     = "enquiriesToUpdateCollection.length" 
+                        items-per-page  = "paginationPageSize"
+                        ng-model        = "paginationCurrentPage">
+            </pagination>
+
+        </div>
+
+
+        <!-- -- detail ---------------------->
+        <div id="cntUpdateEnquiry-searchResultsEnquiryToUpdate-detail"  ng-show="isShow_searchResultsEnquiryToUpdate_detail">
+
+            <a ng-show="isShow_backToEnquiryToUpdateListingButton" ng-click="goBackToEnquiryToUpdateListing()">&larr; Back to Listing</a>
+           
+
+            <!-- -------------- Enter Values ----------------->
+            <div id="cntEnterValues-updateEnquiry" class="enterValues enterValues80pc" ng-show="isShow_enterValues"> 
+
+
+                <!-- ---------------- Enquirer Personal Details --------------------------------->
+
+                <div class="section-heading section-heading-collapse" init="isCollapsed_updatePersonalDetails=false" ng-click="isCollapsed_updatePersonalDetails = !isCollapsed_updatePersonalDetails">Enquirer Personal Details</div>
+                <div class="section-update" collapse="isCollapsed_updatePersonalDetails">
+
+                    <div id="cntEnterValues-updateEnquiry-personalDetails">
+                        <div class='cnt1Item'>
+                            <label>First Name:</label>                        
+                            <input type='text' class="inputFieldUser" value="{{ formData_updateEnquiry.firstname }}" ng-model="formData_updateEnquiry.firstname" disabled />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Last Name:</label>                        
+                            <input type='text' class="inputFieldUser important" value="{{ formData_updateEnquiry.lastname }}" ng-model="formData_updateEnquiry.lastname" disabled />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Sign-in Email:</label>                        
+                            <input type='email' class="inputFieldUser" value="{{ formData_updateEnquiry.email }}" ng-model="formData_updateEnquiry.email" disabled />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Primary Phone:</label>                        
+                            <input type ='text' class="inputFieldUser" value="{{ formData_updateEnquiry.phone }}" ng-model="formData_updateEnquiry.phone" disabled />
+                        </div>
+                    </div>
+
+                    <!-- -------------- personal details update buttons ----------------->  
+                    <!--
+                    <div id="cntUpdateEnquiry-detail-button" class='saveButtons'>
+                        <input type="button" class="btn btn-colour orange-button"   value="Update"   ng-click="updatePersonalDetails()" />
+                    </div>
+                    -->
+                </div>
+
+                <br>
+                <!-- ---------------- Enquiry Details --------------------------------->
+                <div class="section-heading section-heading-collapse" init="isCollapsed_enquiryDetails=false" ng-click="isCollapsed_enquiryDetails = !isCollapsed_enquiryDetails">Enquiry Details</div>
+                <div class="section-update" collapse="isCollapsed_enquiryDetails">
+
+                    <div id="cntEnterValues-updateEnquiry-Enquiry">
+                        <div class='cnt1Item'>
+                            <label>Date Lodged:</label>                        
+                            <input type ='text' class="inputFieldEnquiry" value="{{ formData_updateEnquiry.dateLodged }}" ng-model="formData_updateEnquiry.dateLodged" disabled />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Rego:</label>                        
+                            <input type='text' class="inputFieldEnquiry" value="{{ formData_updateEnquiry.rego }}" ng-model="formData_updateEnquiry.rego"  disabled />
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Enquiry:</label>                        
+                            <textarea class="inputFieldEnquiry" ng-model="formData_updateEnquiry.enquiry" disabled>{{ formData_updateEnquiry.enquiry}}</textarea>
+                        </div>
+                        <div class='cnt1Item'>
+                            <label>Status:</label> 
+                            <select ng-model="formData_updateEnquiry.selectedStatusType"
+                                    ng-options="statusType.display for statusType in statusTypes"
+                                    class="inputFieldEnquiry">
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- -------------- delete /cancel User buttons ----------------->  
+            <div id="cntUpdateEnquiry-updateDelete-button" class='saveButtons'>
+                <input type="button" class="btn btn-colour orange-button"   value="Update"   ng-click="updateEnquiryStatus()" />
+                <input type="button" class="btn btn-colour red-button"      value="Delete"   ng-click="deleteEnquiry()" />
+                <input type="button" class="btn btn-colour white-button"    value="Close"    ng-click="updateEnquiryCancel()" /><br>
+            </div>
+
+        </div>
+            
+
+        <!-- -- no results ------------------>
+        <div id='cntUpdateCar-searchResultsEnquiryToUpdate-noResults'   ng-show="isShow_searchResultsEnquiryToUpdate_noResults">
+            <h2>No Enquiry with Given Criteria Found</h2>
+        </div>
+
+</div>

@@ -1,0 +1,83 @@
+<!-- 
+    tabAddNewCar-MakeModel
+
+    Description: this is called from app/pages/component/addCar.htm tab menu.
+
+    by Clinton Fong 2014
+-->
+
+<!-- -------- cntAddCar-MakeModel ----------------- -->
+<div id='cntAddCar-MakeModel'>
+
+    <div id='cntEnterValues-MakeModel' class='enterValues'>
+
+        <div id='cntAddNewMake' class='cntItem1'>
+            <label>Make:</label>
+            <select ng-model    = "formData_addCar.selectedMakeModels"
+                    ng-change   = "formData_addCar.selectedModel = formData_addCar.selectedMakeModels.models[ formData_addCar.selectedMakeModels.idxSelectedModel ]"
+                    ng-options  = "makeModels.make for makeModels in makeModelsCollection">
+            </select>
+
+            <input type='button' value='Add New Make'   class='btn btn-colour green-button'    ng-click="addUpdateMakeDialog('new', formData_addCar )">
+            <input type='button' value='Update Make'    class='btn btn-colour orange-button'   ng-click="addUpdateMakeDialog('update', formData_addCar )">
+            <input type='button' value='Delete Make'    class='btn btn-colour red-button'      ng-click="deleteMakeConfirm( formData_addCar )">
+        </div>
+
+        <div id='cntAddNewModel' class='cntItem1'>
+            <label>Model:</label>
+            <select ng-model    = "formData_addCar.selectedModel"
+                    ng-change   = "formData_addCar.selectedMakeModels.idxSelectedModel = formData_addCar.selectedModel.idx"
+                    ng-options  = "model.model for model in formData_addCar.selectedMakeModels.models | orderBy: 'model': false">
+            </select>
+        
+            <input type='button' value='Add New Model'  class='btn btn-colour green-button'     ng-click="addUpdateModelDialog('new', formData_addCar )">
+            <input type='button' value='Update Model'   class='btn btn-colour orange-button'    ng-click="addUpdateModelDialog('update', formData_addCar )">
+            <input type='button' value='Delete Model'   class='btn btn-colour red-button'       ng-click="deleteModelConfirm( formData_addCar )">
+        </div>
+
+    </div>
+</div>
+
+
+<!-- -------- Modal dialog ----------------- -->
+
+<!-- Model of Car ---->
+
+<script type="text/ng-template" id="enterMakeOfCar.htm">
+
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title1 }}<br>{{ title2 }}</h3>
+    </div>
+    <div class="modal-body" >
+        <label>Make:</label>
+        <input type='text' value='{{make}}' ng-model='make'>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+
+<!-- Model of Car ---->
+
+<script type="text/ng-template" id="enterModelOfCar.htm">
+
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title1 }}<br>{{ title2 }}</h3>
+    </div>
+    <div class="modal-body" >
+
+        <label>Make:</label>
+        <input type='text' value='{{make}}' ng-model='make' ng-disabled='true'><br>
+
+        <label>Model:</label>
+        <input type='text' value='{{model}}' ng-model='model'>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+

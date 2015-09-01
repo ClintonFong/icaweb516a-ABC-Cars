@@ -1,0 +1,180 @@
+<!-- 
+    tabAddNewCar-ListSell
+
+    Description: this is called from app/pages/component/addNewCar.htm tab menu.
+
+    by Clinton Fong 2014
+-->
+
+<div class="message-boxes">
+    <!-- errorBox --------------------------->
+    <div id="errorBox-addCar" ng-show="isShowErrorBox_addCar"> 
+        <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+    </div>
+
+    <!-- successBox --------------------------->
+    <div id="successBox-addCar" ng-show="isShowSuccessBox_addCar"> 
+        <alert type="success">{{ successMessage }}</alert>
+    </div>
+</div>
+
+<!-- -------- cntAddNewCar-listSell ----------------- -->
+<div id="cntAddCar-listSell">
+
+    <form name="frmEnterValues-listSell" ng-submit="submitForm_enterValuesListSell()">
+
+
+        <!-- -------------- Enter Values ----------------->
+        <div id="cntEnterValues-listSell" class="enterValues enterValues80pc">
+
+            <!-- ---------------- Registration --------------------------------->
+            <div class='section-heading'>Registration</div>
+
+            <div id='cntIsNew-listSell' class='cnt1Item'>
+                <label>Is New Car:</label>
+                <input type='checkbox' ng-model='formData_addCar.isNewCar' />
+            </div>
+
+            <div id='cntRego-listSell' class='cnt1Item'>
+                <label>Rego:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.rego' value='formData_addCar.rego' required />
+            </div>
+
+            <div id='cntVIN-listSell' class='cnt1Item'>
+                <label>VIN:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.VIN' value='{{ formData_addCar.VIN }}' required />
+                <span> VIN number must be 17 characters</span>
+            </div>
+
+
+            <br>
+            <!-- ---------------- Make & Price --------------------------------->
+            <div class='section-heading'>Make &amp Price</div>
+
+
+            <div id='cntMakeModel-listSell'class ='cnt2Items'>   
+                <div id='cntAddNewMake-listSell' class='cntItem1'>
+                    <label>Make:</label>
+                    <select ng-model    = "formData_addCar.selectedMakeModels"
+                            ng-change   = "formData_addCar.selectedModel = formData_addCar.selectedMakeModels.models[ formData_addCar.selectedMakeModels.idxSelectedModel ]"
+                            ng-options  = "makeModels.make for makeModels in makeModelsCollection"  
+                            class       = "inputField">
+                    </select>
+                </div>
+
+                <div id='cntAddNewModel-listSell' class='cntItem2'>
+                    <label>Model:</label>
+                    <select ng-model    = "formData_addCar.selectedModel"
+                            ng-change   = "formData_addCar.selectedMakeModels.idxSelectedModel = formData_addCar.selectedModel.idx"
+                            ng-options  = "model.model for model in formData_addCar.selectedMakeModels.models | orderBy: 'model': false"
+                            class       ="inputField" 
+                            required>
+                    </select>      
+                </div>
+            </div>
+
+            <div id='cntYear-listSell' class='cnt1Item'>
+                <label>Year:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.year' value='' />
+            </div>
+
+            <div id='cntPrice-listSell' class='cnt1Item'>
+                <label>Price:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.price' value='' />
+            </div>
+
+            <br>
+            <!-- ---------------- Engine --------------------------------->
+            <div class='section-heading'>Engine</div>
+
+            <div id='cntTransmission-listSell' class='cnt1Item'>
+                <label>Transmission:</label>
+                <select ng-model    = "formData_addCar.selectedTransmission"
+                        ng-options  = "transmission.transmission for transmission in transmissions | orderBy: 'transmission': false"
+                        class       = "inputField">
+                </select>
+            </div>
+
+            <div id='cntFuelType-listSell' class='cnt1Item'>
+                <label>Fuel Type:</label>
+                <select ng-model    = "formData_addCar.selectedFuelType"
+                        ng-options  = "fuelType.fuelType for fuelType in fuelTypes | orderBy: 'fuelType': true"
+                        class       = "inputField">
+                </select>
+            </div>
+
+            <div id='cntDriveType-listSell' class='cnt1Item'>
+                <label>Drive Type:</label>
+                <select ng-model    = "formData_addCar.selectedDriveType"
+                        ng-options  = "driveType.driveType for driveType in driveTypes | orderBy: 'driveType': false"
+                        class       = "inputField">
+                </select>
+            </div>
+
+            <div id='cntCylinders-listSell' class='cnt1Item'>
+                <label>Cylinders:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.cylinders' value='' />
+            </div>
+
+            <div id='cntKilometres-listSell' class='cnt1Item'>
+                <label>Kilometres:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.kilometres' value='' />
+            </div>
+
+            <div id='cntEngineSizeCCs-listSell' class='cnt1Item'>
+                <label>Engine Size (CCs):</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.engineSizeCCs' value='' />
+            </div>
+
+            <div id='cntPowerkW-listSell' class='cnt1Item'>
+                <label>Power (kW):</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.powerkW' value='' />
+            </div>
+
+            <br>
+            <!-- ---------------- Style --------------------------------->
+            <div class='section-heading  section-heading-color1'>Style</div>
+
+            <div id='cntBodyType-listSell' class='cnt1Item'>
+                <label>Body Type:</label>
+                <select ng-model    = "formData_addCar.selectedBodyType"
+                        ng-options  = "bodyType.bodyType for bodyType in bodyTypes | orderBy: 'bodyType': false"
+                        class       = "inputField">
+                </select>
+            </div>
+
+            <div id='cntSeats-listSell' class='cnt1Item'>
+                <label>Seats:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.seats' value='' />
+            </div>
+
+            <div id='cntDoors-listSell' class='cnt1Item'>
+                <label>Doors:</label>
+                <select ng-model    = "formData_addCar.selectedNumDoors"
+                        ng-options  = "numDoors.numDoors for numDoors in doors | orderBy: 'numDoors': false"
+                        class       = "inputField">
+                </select>
+            </div>
+
+            <div id='cntColourInterior-listSell' class='cnt1Item'>
+                <label>Interior Colour:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.colourInterior' value='' />
+            </div>
+
+            <div id='cntColourExterior-listSell' class='cnt1Item'>
+                <label>Exterior Colour:</label>
+                <input type='text' class="inputField" ng-model='formData_addCar.colourExterior' value='' />
+            </div>
+
+
+        </div>
+
+        <!-- -------------- Save Values ----------------->  
+        <div id="cntSaveButton-listSell" class='saveButtons'>
+            <input  type="submit" class="btn btn-colour blue-button" value="Save" />
+        </div>
+
+    </form> <!-- frmEnterValues-listSell -->
+
+</div>
+

@@ -1,0 +1,70 @@
+<!-- 
+    addCustomer
+
+    Description: this is called from 'app/pages/homeStaff.htm' or 'app/pages/homeManager.htm'
+
+    by Clinton Fong 2014
+-->
+<div id="addCustomerPage" class="rightPanel" ng-controller="handleCustomerController">
+
+    <h1>Add Customer</h1>
+
+    <!-- errorBox --------------------------->
+    <div id='errorBox-addCustomer' ng-show="isShowErrorBox_addCustomer">
+        <alert type="danger"><div ng-repeat="errorMessage in errorMessages"><label>Error:</label> {{ errorMessage }}</div></alert>
+    </div>
+
+    <!-- successBox --------------------------->
+    <div id='successBox-addCustomer' ng-show="isShowSuccessBox_addCustomer">
+        <alert type="success">{{ successMessage }}</alert>
+    </div>
+
+
+    <!-- Adding customer  --------------------------->
+    <div id="cntAddCustomer">
+
+        <!-- cntEnterValues-addCustomer --------->
+        <div id="cntEnterValues-addCustomer" class="enterValues enterValues80pc">
+
+            <div class='cnt1Item'>
+                <label class='required'>First Name:</label>                        
+                <input type='text' class="inputFieldUser" value="{{ formData_addCustomer.firstname }}" ng-model="formData_addCustomer.firstname" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required'>Last Name:</label>                        
+                <input type='text' class="inputFieldUser" value="{{ formData_addCustomer.lastname }}" ng-model="formData_addCustomer.lastname" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Sign-in Email:</label>                        
+                <input type='email' class="inputFieldUser" value="{{ formData_addCustomer.email }}" ng-model="formData_addCustomer.email" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Primary Phone:</label>                        
+                <!--
+                <input name='primaryPhone' id='registerPrimaryPhone' type ='text' class="inputFieldUser" value="{{ formData_addCustomer.phone }}" ng-model="formData_addCustomer.phone" ng-class="{submitted:submitAddCustomer.isSubmitted}" onkeypress="isPhoneNumberKey(event)" required />
+                -->
+                <input name='primaryPhone' id='registerPrimaryPhone' type ='text' class="inputFieldUser" value="{{ formData_addCustomer.phone }}" ng-model="formData_addCustomer.phone" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+            <div class='cnt1Item'>
+                <label class='required' >Password:</label>                        
+                <input type ='password' class="inputFieldUser" value="{{ formData_addCustomer.password }}" ng-model="formData_addCustomer.password" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+
+            <div class='cnt1Item'>
+                <label class='required'>Confirm Password:</label>                        
+                <input type ='password' class="inputFieldUser" value="{{ formData_addCustomer.passwordConfirm }}" ng-model="formData_addCustomer.passwordConfirm" ng-class="{submitted:submitAddCustomer.isSubmitted}" required />
+            </div>
+
+            <!--
+            <div id='cntRegisterMessage' ng-show='false'>
+                <br><label id='lblMsgRegister' class='required important'>Register Customer Unsuccessful:: Sign-in email already taken</label>
+            </div>
+            -->
+
+        </div>
+
+        <div id="cntSaveButton-addCustomer" class='saveButtons'>
+            <input name="btnRegister" id="btnRegister" type="button" value="Save" class="btn btn-colour blue-button" ng-click="saveCustomer()" />
+        </div>
+    </div>
+</div>

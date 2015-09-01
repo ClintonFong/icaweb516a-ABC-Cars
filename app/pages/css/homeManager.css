@@ -1,0 +1,615 @@
+
+#left-panel
+{
+    margin-top      : 10px;
+    padding-left    : 5px;
+    padding-right   : 5px;
+    height          : 99%;
+}
+
+accordion
+{
+    text-align: left;
+}
+
+/* menu heading */
+
+#cntLeftMenu .panel-heading
+{
+    width: 100%;
+
+    text-decoration: none;
+
+    background-color: #64BA19;
+    background-image: -moz-linear-gradient(90deg, #ffffff  0%, #FFE000 100%);
+    background-image: -o-linear-gradient(90deg, #ffffff  0%, #FFE000 100%);
+    background-image: -webkit-linear-gradient(90deg, #ffffff 0%, #FFE000 100%);
+    background-image: linear-gradient(90deg, #ffffff 0%, #aaaaaa 100%);    
+}
+
+#cntLeftMenu .panel-heading:hover
+{
+    text-decoration: none;
+}
+
+#cntLeftMenu .panel-heading a
+{
+    padding-left: 10px;
+    font-weight: bold;
+    text-shadow: 0 2px 0 #fff;    
+}
+
+.panel-heading:hover
+{
+    cursor: pointer;
+}
+
+.message-boxes
+{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+
+/* Surrounding container for enter field and buttons on right panel - Add New Car Page - To List & Sell + Update Car Page - Add Customer */
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-detail,
+#cntAddStaff,
+#cntUpdateStaff-searchResultsStaffToUpdate-detail,
+#cntAddCustomer,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-detail,
+#cntAddCar-listSell,
+#cntUpdateCar-searchResultsCarToUpdate-detail
+{
+    width           : 100%;
+    text-align      : left;
+    padding         : 10px 0 10px 1px;
+    
+    position        : relative;
+}
+
+/*
+#cntUpdateCustomer-searchResultsCustomerToUpdate-detail .enterValues,
+#cntAddCustomer .enterValues,
+#cntUpdateCar-searchResultsCarToUpdate-detail .enterValues,
+#cntAddCar-listSell .enterValues
+*/
+.enterValues80pc    
+{
+    width           : 80%;
+    height          : 100%;
+}
+
+.enterValues
+{
+    border-radius   : 5px;
+
+    border          :  1px solid #ADADAD;
+    margin          : 10px 0px 10px 0px; 
+    text-align      : left;
+    padding         : 10px 10px 20px 10px;
+    
+    background-color: #fff;
+    background-image: -moz-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -o-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: -webkit-linear-gradient(0deg, #575353 0%, #efedee 100%);
+    background-image: linear-gradient(0deg, #918D8E 0%, #F9F9F9 100%);    
+}
+
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail .saveButtons,
+#cntAddCar-listSell .saveButtons
+*/
+.saveButtons
+{
+    position        : absolute;
+    right           : 0px;
+    top             : 20px;
+    width           : 20%;  
+    text-align      : center;
+}
+
+#cntUpdateEnquiry-updateDelete-button,
+#cntUpdateStaff-delete-button,
+#cntUpdateCustomer-delete-button,
+#cntUpdateCar-searchResultsCarToUpdate-detail .saveButtons
+{
+    top: 40px;
+}
+
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail .section-heading,
+#cntAddCar-listSell .section-heading
+*/
+.section-heading-collapse
+{
+    cursor: pointer;
+}
+
+.section-heading    
+{
+    font-size       : 20px;
+    border-bottom   : 1px solid #999;
+    font-weight     : normal;
+    margin-bottom   : 20px;
+    padding-left    : 5px;      
+}
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail .section-heading-color1,
+#cntAddCar-listSell .section-heading-color1 
+*/
+.section-heading-color1     
+{
+    border-color   : #bbb;
+}
+
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cnt1Item label,
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem1 label,
+#cntAddCar-listSell div.cnt1Item label,
+#cntAddCar-listSell div.cntItem1 label
+*/
+div.cnt1Item label,
+div.cntItem1 label
+{
+    width: 150px;
+    vertical-align: top;
+}
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem2 label,
+#cntAddCar-listSell div.cntItem2 label
+*/   
+div.cntItem2 label,
+div.cntItem2 label
+{
+    width: 60px;
+}
+
+/*
+#cntUpdateCar-searchResultsCarToUpdate-detail .inputField,
+#cntAddCar-listSell .inputField
+*/
+.inputField
+{
+    width: 150px;
+}
+
+.inputFieldUser
+{
+    width: 250px;
+}
+
+
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem1,
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem2,
+#cntAddCar-listSell div.cntItem1,
+#cntAddCar-listSell div.cntItem2
+{
+    display: inline-block;
+}
+
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem1,
+#cntAddCar-listSell div.cntItem1
+{
+    width: 53%;
+}
+#cntUpdateCar-searchResultsCarToUpdate-detail div.cntItem2,
+#cntAddCar-listSell div.cntItem2
+{
+    width: 45%;
+}
+
+
+#cntMakeModel-updateCar,
+#cntMakeModel-listSell
+{
+    border: 1px solid #999;
+    display: flex;
+    width: 98%;
+    padding: 10px 0px 5px 0;
+    margin-bottom: 10px;
+}
+
+/* photos */
+/* load button & file field */
+.fileLoad 
+{
+	position: relative;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.fileLoad input[type=file].load
+{
+	position: absolute;
+    display: inline-block;
+  
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+input.fileLoadFilename
+{
+    width: 70%;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+#cntUpdateCar-uploadImageFile
+{
+    margin-left: 0px;
+}
+
+#cntUpdateCar-photo-thumbnails,
+#cntUpdateCar-photo
+{
+    display: block;
+    width: 100%;  
+    overflow: hidden;   
+}
+
+#cntUpdateCar-photoButtons
+{
+    padding: 5px 0 0 5px;
+}
+
+#cntUpdateCar-photo-thumbnails
+{
+    padding: 5px 0;
+    margin-top: 10px;
+    height: 450px;
+    background-color: #fff;
+    border: 2px solid #aaa;
+}
+.thumbnailNav 
+{
+    display: block;
+    height: auto;
+    left: 0px;;
+    margin: 40px auto;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    z-index: 5;
+}
+
+.thumbnailNav li 
+{
+    background-color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    max-height: 75px;
+    max-width: 130px;
+    margin: 0 8px;
+    position: relative;
+}
+
+.thumbnailNav li.active 
+{
+    border: 5px solid #FFFFFF;
+}
+
+.thumbnailNav li img 
+{
+    width: 100%;
+}
+/* - already in index.css
+img.car-listing-thumbnail
+{
+    max-height: 75px;
+    max-width: 130px;   
+}
+*/
+/* button */
+.searchButtons input 
+{
+    margin-bottom   : 5px;
+}
+
+.saveButtons input 
+{
+    width           : 100px;
+    margin-bottom   : 5px;
+}
+
+
+/* Add New Car Page - New Make & Model */
+
+.rightPanel
+{
+    margin: 10px 10px 10px 0;
+    border: 2px solid #4285F4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.rightPanel h1
+{
+    text-align: left;
+    margin: 10px auto;
+        
+}
+
+#cntAddCar-MakeModel
+{
+    padding-top: 20px;
+}
+
+#cntEnterValues-MakeModel
+{
+    width: 100%;
+}
+
+#cntAddCar-MakeModel div.cntItem1
+{
+    width: 100%;
+    text-align: left;
+    font-szie: 12px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+#cntAddCar-MakeModel select
+{
+    height: 25px;
+    width:  200px;
+}
+
+
+/* modal dialog class */
+.dialogAddUpdateMakeModel .modal-dialog
+{
+    width: 385px;
+    font-size: 20px;   
+}
+
+.dialogAddUpdateMakeModel .modal-dialog label
+{
+    width       : 80px;
+    text-align  : right;
+}
+
+.dialogConfirmDeletion h3
+{
+    color: #f00;
+}
+
+.dialogConfirmDeletion span
+{
+    font-weight: bold;
+    font-size: 14px;       
+}
+
+.dialogConfirmDeletion span.highlight
+{
+    font-size: 16px;
+    color: #fe880d;
+}
+
+/* update - search fieldset*/
+
+.fldsetUpdateDelete
+{
+    position        : relative;
+    top             : 5px;
+    height          : 100%;
+    width           : 100%;
+    padding         :  0.2em 3px;
+    border          :  1px solid #999;
+    margin-bottom   : 30px;   
+    text-align      : left;
+    display         : flex;
+}
+
+.fldsetUpdateDelete legend
+{
+    margin          : 0;
+    text-align      : left;
+    width           : 255px;
+    color           : #fff;
+    border-color    : #FFE2B7;
+    border-radius   : 4px;
+    cursor          : pointer;
+    
+    background-image: -moz-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: -o-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: -webkit-linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);
+    background-image: linear-gradient(0deg, #4285F4 0%, #A8C6FA 100%);    
+/*    
+    background-image: -moz-linear-gradient(0deg, #E7AC31 0%, #FAD160 100%);
+    background-image: -o-linear-gradient(0deg, #E7AC31 0%, #FAD160 100%);
+    background-image: -webkit-linear-gradient(0deg, #E7AC31 0%, #FAD160 100%);
+    background-image: linear-gradient(0deg, #E7AC31 0%, #FAD160 100%);    
+*/    
+}
+
+#fldsetUpdateStaff legend,
+#fldsetUpdateCustomer legend
+{
+    width: 330px;
+}
+
+#cntUpdateEnquiry-getEnquiryToUpdate,
+#cntUpdateStaff-getStaffToUpdate,
+#cntUpdateCustomer-getCustomerToUpdate,
+#cntUpdateCar-getCarToUpdate
+{
+    display: flex; 
+         
+}
+
+#cntUpdateCar-getCarToUpdate .inputField
+{
+    width: 200px;
+}
+
+#cntGetEnquiryButton-updateEnquiry-search,
+#cntGetStaffButton-updateStaff-search,
+#cntGetCustomerButton-updateCustomer-search,
+#cntGetCarButton-updateCar-search
+{
+    padding: 5px 0 0 10px;
+}
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate table,
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table,
+#cntUpdateCar-searchResultsCarToUpdate-listing table
+{
+    width: 100%;
+}
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing th,
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing td,
+#cntUpdateStaff-searchResultsStaffToUpdate-listing th,
+#cntUpdateStaff-searchResultsStaffToUpdate-listing td,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing th,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing td,
+#cntUpdateCar-searchResultsCarToUpdate-listing table th,
+#cntUpdateCar-searchResultsCarToUpdate-listing table td
+{
+    text-align  : left;
+    padding     : 5px;
+    border-left: 1px solid #ddd;
+}
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table th,
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table th,
+#cntUpdateCar-searchResultsCarToUpdate-listing table th
+{
+    color           : #fff;
+    background-color: #2177b7;
+    background-image: -moz-linear-gradient(0deg, #2177b7 0%, #4197d7 100%);
+    background-image: -o-linear-gradient(0deg, #2177b7 0%, #4197d7 100%);
+    background-image: -webkit-linear-gradient(0deg, #2177b7 0%, #4197d7 100%);
+    background-image: linear-gradient(0deg, #2177b7 0%, #4197d7 100%);    
+}
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table tr:hover,
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table tr:hover,
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table tr:hover,
+#cntUpdateCar-searchResultsCarToUpdate-listing table tr:hover           
+{ 
+    cursor          : pointer;
+    color           : #fff;
+    background-color: #64BA19;
+    background-image: -moz-linear-gradient(90deg, #64BA19 0%, #64BA19 100%);
+    background-image: -o-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: -webkit-linear-gradient(90deg, #64BA19 0%, #125102 100%);
+    background-image: linear-gradient(0deg, #555555 0%, #bbbbbb 100%);    
+}
+
+#cntUpdateCar-searchResultsCarToUpdate-listing table tr:nth-child(odd)  { background-color: #ccc; }
+#cntUpdateCar-searchResultsCarToUpdate-listing table tr:nth-child(even) { background-color: #fff; }
+
+#cntUpdateCar-searchResultsCarToUpdate-listing table th:nth-child(1)    { width: 16%; border-left: 0px; }   /* photo */
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(2)    { width: 12%; border-left: 0px; }   /* rego */
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(3)    { width: 25% }                      /* VIN */
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(4)    { width: 12% }                      /* Make */
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(5)    { width: 14% }                      /* Model */
+#cntUpdateCar-searchResultsCarToUpdate-listing table th:nth-child(6),
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(6)    { width: 5%; text-align: right; }   /* year */
+#cntUpdateCar-searchResultsCarToUpdate-listing table th:nth-child(7),
+#cntUpdateCar-searchResultsCarToUpdate-listing table td:nth-child(7)    { width: 16%; text-align: right; }  /* price */
+
+#cntUpdateCar-searchResultsCarToUpdate-detail
+{
+    height: 100%;
+}
+
+#cntUpdateCar-searchResultsCarToUpdate-detail a
+{
+    text-decoration: none;      
+}
+
+#cntUpdateCar-searchResultsCarToUpdate-detail a:hover
+{
+    cursor: pointer;
+}
+
+
+/* Customer */
+
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table tr:nth-child(odd)  { background-color: #ccc; }
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table tr:nth-child(even) { background-color: #fff; }
+
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table th:nth-child(1)    { width: 20%; }    /* LASTNAME */
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table td:nth-child(2)    { width: 20%; }    /* Firstname */
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table td:nth-child(3)    { width: 40%; }    /* email */
+#cntUpdateCustomer-searchResultsCustomerToUpdate-listing table td:nth-child(4)    { width: 20%; }    /* phone */
+
+.section-update
+{
+    position: relative;
+}
+
+.section-update .saveButtons
+{
+    top: 0px;
+}
+
+/* Staff */
+
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table tr:nth-child(odd)  { background-color: #ccc; }
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table tr:nth-child(even) { background-color: #fff; }
+
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th:nth-child(1)    { width: 12%; }    /* UserType */
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th:nth-child(2)    { width: 19%; }    /* LASTNAME */
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th:nth-child(3)    { width: 19%; }    /* Firstname */
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th:nth-child(4)    { width: 35%; }    /* email */
+#cntUpdateStaff-searchResultsStaffToUpdate-listing table th:nth-child(5)    { width: 15%; }    /* phone */
+
+
+/* enquiries */
+.inputFieldEnquiry
+{
+    width: 400px;
+    resize: none;   
+}
+
+textarea.inputFieldEnquiry
+{
+    height: 120px;
+}
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table tr:nth-child(odd)  { background-color: #ccc; }
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table tr:nth-child(even) { background-color: #fff; }
+
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table th:nth-child(1)    { width: 30%; }    /* Date Lodged */
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table th:nth-child(2)    { width: 25%; }    /* LASTNAME */
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table th:nth-child(3)    { width: 25%; }    /* Firstname */
+#cntUpdateEnquiry-searchResultsEnquiryToUpdate-listing table th:nth-child(4)    { width: 20%; }    /* Status */
+
+
+/* Date */
+
+.btn-date
+{
+    height: 26px;
+    width: 30px;
+    border: 0;
+    font-size: 14px;
+    border: 1px;
+/*    
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+*/    
+}
+
+.input-group
+{
+    display: inline-flex;
+}
+
+.date-field
+{
+    width: 220px;
+    height: 26px;
+    border: 1px;
+}
